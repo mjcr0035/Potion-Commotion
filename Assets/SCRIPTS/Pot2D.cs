@@ -10,33 +10,35 @@ public class Pot2D : MonoBehaviour
     // Define your recipes: key is a combination of ingredients, value is the resulting item name
     private Dictionary<HashSet<string>, string> recipes = new Dictionary<HashSet<string>, string>()
     {
-        { new HashSet<string> { "Salt", "Pepper" }, "Flour" },   // Example recipe: Salt + Pepper = Flour
-        { new HashSet<string> { "Salt", "Sun" }, "SaltSun" },    // Example recipe: Water + Flour = Bread
-        { new HashSet<string> { "Pepper", "Sun" }, "PepperSun" }
+       { new HashSet<string> { "Ingredient1", "Ingredient2" }, "Potion1" },   // Example recipe: Salt + Pepper = Flour
+        { new HashSet<string> { "Ingredient3", "Ingredient2" }, "Potion2" },
+    };
+
+    // Define exceptions: key is a combination of ingredients that should "fail"
+    private HashSet<HashSet<string>> recipeExceptions = new HashSet<HashSet<string>>()
+    {
+        new HashSet<string> { "Ingredient1", "Ingredient3" }     // Example exception: Ingredient1 + Ingredient3 = fail
     };
 
     // Dictionary to store prefabs associated with each recipe result
     public Dictionary<string, GameObject> recipePrefabs = new Dictionary<string, GameObject>();
+
+    // Prefabs for different recipe results (assign these in the Inspector)
+    public GameObject Potion1prefab;
+    public GameObject Potion2prefab;
+    public GameObject PepperSunprefab;
 
     // Flag to ensure only one recipe is created at a time
     private bool isRecipeBeingProcessed = false;
 
     void Start()
     {
-        // Manually add the prefabs to the dictionary or set them up in the Unity Inspector
-        // You could also expose the prefab assignment in the Inspector as public fields
-
         // Assign prefab references to each recipe result
-        // Example: Replace these with the correct prefabs you've created
-        recipePrefabs["Flour"] = flourPrefab;  // Ensure flourPrefab is assigned
-        recipePrefabs["SaltSun"] = SaltSun;  // Ensure breadPrefab is assigned
-        recipePrefabs["PepperSun"] = PepperSun;
-    }
+        recipePrefabs["Potion1"] = Potion1prefab;  // Ensure flourPrefab is assigned
+        recipePrefabs["Potion2"] = Potion2prefab;  // Ensure breadPrefab is assigned
+        recipePrefabs["PepperSun"] = PepperSunprefab;
 
-    // Prefabs for different recipe results (assign these in the Inspector)
-    public GameObject flourPrefab;
-    public GameObject SaltSun;
-    public GameObject PepperSun;
+    }
 
     // Called when another collider enters the pot's trigger collider (2D)
     void OnTriggerEnter2D(Collider2D other)
@@ -75,6 +77,15 @@ public class Pot2D : MonoBehaviour
             return;
         }
 
+        // Check for exceptions first
+        if (CheckForExceptions())
+        {
+            Debug.LogWarning("Invalid ingredient combination. No recipe will be created.");
+            ResetIngredients(); // Clear the ingredients if the exception is triggered
+            return; // Do nothing if an exception occurs
+        }
+
+        // Check for valid recipes
         foreach (var recipe in recipes)
         {
             // If the ingredients in the pot match a recipe
@@ -87,6 +98,19 @@ public class Pot2D : MonoBehaviour
             }
         }
         Debug.Log("No matching recipe found.");
+    }
+
+    // Check if the added ingredients match an exception (invalid combination)
+    bool CheckForExceptions()
+    {
+        foreach (var exception in recipeExceptions)
+        {
+            if (exception.SetEquals(addedIngredients))
+            {
+                return true; // If the ingredients match an exception, return true
+            }
+        }
+        return false; // No exceptions found
     }
 
     // Create the new item and clear used ingredients
@@ -139,10 +163,31 @@ public class Pot2D : MonoBehaviour
         Debug.Log("New item instantiated: " + newItemObject.name);
     }
 
+    // Reset ingredients (optional, to reset the pot after a failure or successful recipe)
+    void ResetIngredients()
+    {
+        Debug.Log("Resetting ingredients...");
+
+        // Clear the list of added ingredients
+        addedIngredients.Clear();
+
+        // Find all ingredients in the scene and reset their 'hasBeenAdded' flag
+        DragIngredient2D[] allIngredients = FindObjectsOfType<DragIngredient2D>();
+        foreach (DragIngredient2D ingredient in allIngredients)
+        {
+            ingredient.hasBeenAdded = false;
+        }
+
+        Debug.Log("Ingredients have been reset in the pot.");
+        isRecipeBeingProcessed = false; // Ensure the flag is reset so new combinations can be processed
+    }
+
     // Optional: Reset method to clear the pot (if needed)
     public void ResetPot()
     {
         addedIngredients.Clear();
         Debug.Log("Pot has been reset.");
+        isRecipeBeingProcessed = false;
     }
 }
+

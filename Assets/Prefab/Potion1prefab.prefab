@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8986117794627625345}
   - component: {fileID: 7264764920256611746}
   m_Layer: 0
-  m_Name: PepperSun
+  m_Name: Potion1prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.97743034, g: 0, b: 1, a: 1}
+  m_Color: {r: 0.60162497, g: 0, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
