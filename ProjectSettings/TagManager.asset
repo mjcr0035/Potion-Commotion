@@ -7,11 +7,12 @@ TagManager:
   - Ingredient
   - Pot
   - Counter
+  - GameplayCamera
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Gameplay
   - Water
   - UI
   - 
@@ -43,4 +44,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Gameplay
+    uniqueID: 4080594091
+    locked: 0
+  - name: UI
+    uniqueID: 2834796837
     locked: 0
