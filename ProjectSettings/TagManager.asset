@@ -8,6 +8,7 @@ TagManager:
   - Pot
   - Counter
   - GameplayCamera
+  - Customer
   layers:
   - Default
   - TransparentFX
