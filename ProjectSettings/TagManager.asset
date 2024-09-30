@@ -9,6 +9,7 @@ TagManager:
   - Counter
   - GameplayCamera
   - Customer
+  - Potion
   layers:
   - Default
   - TransparentFX

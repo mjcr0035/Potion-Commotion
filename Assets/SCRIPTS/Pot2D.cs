@@ -93,6 +93,12 @@ public class Pot2D : MonoBehaviour
             {
                 Debug.Log("Recipe match found: " + string.Join(", ", recipe.Key));
                 isRecipeBeingProcessed = true; // Set flag to indicate a recipe is being processed
+
+                foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Potion"))
+                    {
+                        Destroy(obj); // Destroy any existing potions in the scene
+                    }
+
                 CreateNewItem(recipe.Value, recipe.Key); // Create the resulting item and clear the used ingredients
                 return;
             }

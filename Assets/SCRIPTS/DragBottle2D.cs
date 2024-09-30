@@ -45,7 +45,7 @@ public class DraggableObject : MonoBehaviour
         if (!isDragging && other.CompareTag("Customer"))
         {
             //debug if recieved
-            Debug.Log("Potion Delivered");
+            //Debug.Log("Potion Delivered");
             
         }
     }
