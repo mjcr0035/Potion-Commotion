@@ -10,6 +10,9 @@ TagManager:
   - GameplayCamera
   - Customer
   - Potion
+  - CustomerManager
+  - SuccessUI
+  - FailureUI
   layers:
   - Default
   - TransparentFX

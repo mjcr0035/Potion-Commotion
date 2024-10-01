@@ -1,19 +1,34 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 
 public class CustomerPrefs : MonoBehaviour
 {
     public string targetObjectName = "Potion1prefab"; // Set this to the name of the specific game object
 
-    private string SuccessUIObjectName = "SuccessUI";
-    private string FailureUIObjectName = "FailureUI";
+    //private string SuccessUIObjectName = "SuccessUI";
+    //private string FailureUIObjectName = "FailureUI";
 
     //NOTE: this is not the final way of doing this, just kind of grabbing refs to UI elements for the sake of the prototype -Jackson
-    public GameObject SuccessUIObjectRef;
-    public GameObject FailureUIObjectRef;
-    
-    
+    //public GameObject SuccessUIObjectRef;
+    //public GameObject FailureUIObjectRef;
+
+    //public CanvasRenderer successImage;
+    //public CanvasRenderer failureImage;
+        
+    public CustomerManager customerManager;
+
+    //--
+    //matthew:
+    //customer order UI stuff should be added here so that customer prefabs come with their orders by default!?
+    //if not we can create a separate script for order randomization and tweak the script in here from that order script.
+    //public SpriteRenderer OrderUISprite;
+    //--
+
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,8 +37,18 @@ public class CustomerPrefs : MonoBehaviour
         //Display 2nd ingredient in speech bubble
 
         //Display finished product in speech bubble
+
+        
+        customerManager = FindObjectOfType<CustomerManager>();
+
+        //SuccessUIObjectRef = GameObject.FindWithTag("SuccessUI");
+        //FailureUIObjectRef = GameObject.FindWithTag("FailureUI");
+
+        //successImage = SuccessUIObjectRef.GetComponent<Image>();
+        //failureImage = SuccessUIObjectRef.GetComponent<Image>();
     }
 
+    
     // Update is called once per frame
     void Update()
     {
@@ -41,17 +66,22 @@ public class CustomerPrefs : MonoBehaviour
         {
             // Perform your logic here
             Debug.Log("Potion Received! Colliding with the target object: " + collision.gameObject.name);
-            
+
             //StartCoroutine(HideAndShow(SuccessUIObjectName));
 
-            FailureUIObjectRef.SetActive(false);
-            SuccessUIObjectRef.SetActive(true);
+
+            //FailureUIObjectRef.SetActive(false);
+            //SuccessUIObjectRef.SetActive(true);
             
+            //successImage.enabled = true;
 
             foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Potion"))
                     {
                         Destroy(obj); // Destroy any existing potions in the scene
                     }
+
+            customerManager.StartCoroutine("DespawnCustomer");
+            
 
         }
         else
@@ -61,13 +91,16 @@ public class CustomerPrefs : MonoBehaviour
 
             //StartCoroutine(HideAndShow(FailureUIObjectName));
 
-            FailureUIObjectRef.SetActive(true);
-            SuccessUIObjectRef.SetActive(false);
+            //FailureUIObjectRef.SetActive(true);
+            //SuccessUIObjectRef.SetActive(false);
+            
 
             foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Potion"))
                     {
                         Destroy(obj); // Destroy any existing potions in the scene
                     }
+
+            customerManager.StartCoroutine("DespawnCustomer");
 
         }
     }
