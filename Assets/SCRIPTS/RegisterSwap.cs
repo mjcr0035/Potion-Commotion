@@ -39,21 +39,16 @@ public class RegisterSwap : MonoBehaviour
         backroom.gameObject.SetActive(false);
         register.gameObject.SetActive(true);
         
-        registerButton.gameObject.SetActive(true);
-        backroomTransform.gameObject.SetActive(false);
+        registerButton.gameObject.SetActive(false);
+        backroomButton.gameObject.SetActive(true);
 
         registerBackground.gameObject.SetActive(true);
         backroomBackground.gameObject.SetActive(false);
 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-     
-    }
-
-    //swaps screen
+    
+    //swaps screen to register
     public void registerChange()
     {
         //screenSwap = true;
@@ -69,12 +64,13 @@ public class RegisterSwap : MonoBehaviour
         Debug.Log("screen changed to register");
     }
 
+    //swaps screen to backroom
     public void backroomChange()
     {
         //screenSwap = false;
         register.gameObject.SetActive(false);
         backroom.gameObject.SetActive(true);
-        
+
         backroomButton.gameObject.SetActive(false);
         registerButton.gameObject.SetActive(true);
 

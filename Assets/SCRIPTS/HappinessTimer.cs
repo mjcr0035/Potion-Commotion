@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,7 +9,8 @@ public class HappinessTimer : MonoBehaviour
 {
     //matthew
     //this script has two methods that start and end a happiness timer of randomized duration
-    //and manipulates a UI element that ticks down based on the duration
+    //and manipulates a UI element that ticks down based on the duration. It also keeps track
+    //of the player's "score", awarding money for each fulfilled order.
     //based off of implementation by @Game Dev Box on YT
 
     [SerializeField] private Image happinessBarFill;
@@ -17,13 +19,15 @@ public class HappinessTimer : MonoBehaviour
 
     public CustomerManager customerManager;
 
+    //public CustomerPrefs customerPrefs;
+
     public float duration;
 
-    private float remainingDuration;
+    public float remainingDuration;
 
     public bool timerActive = false;
 
-    
+
     public void StartHappinessTimer(float duration)
     {
         //starts the happiness timer, then activates the happiness ui element and starts the update coroutine
@@ -51,6 +55,8 @@ public class HappinessTimer : MonoBehaviour
             yield return null;
         }
 
+        //waits for five seconds after the timer is depleted before actually leaving
+        yield return new WaitForSeconds(5);
         StopHappinessTimer();
     }
 
@@ -67,4 +73,6 @@ public class HappinessTimer : MonoBehaviour
 
         happinessTimerUI.SetActive(false);
     }
+
+
 }

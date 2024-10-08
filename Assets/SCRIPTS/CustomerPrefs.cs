@@ -12,13 +12,14 @@ public class CustomerPrefs : MonoBehaviour
     //private string FailureUIObjectName = "FailureUI";
 
     //NOTE: this is not the final way of doing this, just kind of grabbing refs to UI elements for the sake of the prototype -Jackson
-    //public GameObject SuccessUIObjectRef;
-    //public GameObject FailureUIObjectRef;
+    
 
     //public CanvasRenderer successImage;
     //public CanvasRenderer failureImage;
         
     public CustomerManager customerManager;
+
+    
 
     //--
     //matthew:
@@ -41,44 +42,30 @@ public class CustomerPrefs : MonoBehaviour
         
         customerManager = FindObjectOfType<CustomerManager>();
 
-        //SuccessUIObjectRef = GameObject.FindWithTag("SuccessUI");
-        //FailureUIObjectRef = GameObject.FindWithTag("FailureUI");
-
-        //successImage = SuccessUIObjectRef.GetComponent<Image>();
-        //failureImage = SuccessUIObjectRef.GetComponent<Image>();
+        
     }
 
     
-    // Update is called once per frame
-    void Update()
-    {
-        //if correct potion tag is dragged over player
-            //display success UI
-        //else
-            //display fail UI
-
-    }
-
     void OnTriggerStay2D(Collider2D collision)
     {
         // Check if the colliding object's name matches the specified name
         if (collision.gameObject.name == targetObjectName)
         {
-            // Perform your logic here
+            //Correct Potion
             Debug.Log("Potion Received! Colliding with the target object: " + collision.gameObject.name);
 
             //StartCoroutine(HideAndShow(SuccessUIObjectName));
 
 
-            //FailureUIObjectRef.SetActive(false);
-            //SuccessUIObjectRef.SetActive(true);
-            
-            //successImage.enabled = true;
+            customerManager.OrderCorrect();
+
 
             foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Potion"))
                     {
                         Destroy(obj); // Destroy any existing potions in the scene
                     }
+
+            
 
             customerManager.StartCoroutine("DespawnCustomer");
             
@@ -86,19 +73,20 @@ public class CustomerPrefs : MonoBehaviour
         }
         else
         {
-            //Wrong
+            //Wrong Potion
             Debug.Log("Incorrect Potion!");
 
+            customerManager.OrderIncorrect();
+            
             //StartCoroutine(HideAndShow(FailureUIObjectName));
 
-            //FailureUIObjectRef.SetActive(true);
-            //SuccessUIObjectRef.SetActive(false);
-            
 
             foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Potion"))
                     {
                         Destroy(obj); // Destroy any existing potions in the scene
                     }
+
+            
 
             customerManager.StartCoroutine("DespawnCustomer");
 

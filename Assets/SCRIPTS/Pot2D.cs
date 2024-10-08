@@ -153,7 +153,7 @@ public class Pot2D : MonoBehaviour
                     inFirstQuadrant = false;
                     Debug.Log("Swirl detected! Total swirls: " + swirlCount);
 
-                    if (swirlCount >= 3)
+                    if (swirlCount >= 1)
                     {
                         foreach (var recipe in recipes)
                         {
