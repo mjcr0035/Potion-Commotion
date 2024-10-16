@@ -38,7 +38,7 @@ public class Pot2D : MonoBehaviour
 
     void Update()
     {
-        DetectSwirl();
+        //DetectSwirl();
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -87,8 +87,9 @@ public class Pot2D : MonoBehaviour
             if (recipe.Key.SetEquals(addedIngredients))
             {
                 Debug.Log("Recipe match found: " + string.Join(", ", recipe.Key));
-                isSwirling = true;  // Now you need to swirl to create the potion
+                //isSwirling = true;  // Now you need to swirl to create the potion
                 isRecipeBeingProcessed = true;
+                CreateNewItem(recipe.Value);
                 return;
             }
         }

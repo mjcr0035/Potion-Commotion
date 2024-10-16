@@ -29,6 +29,12 @@ public class RegisterSwap : MonoBehaviour
     public GameObject registerBackground;
     public GameObject backroomBackground;
 
+    public GameObject gameplayCamera;
+    public float lerpSpeed = 1.0f; //lerp speed
+
+    Vector3 newPosition;
+    bool SwitchingToRegister = false;
+    bool SwitchingToBackroom = false;
 
 
     // Start is called before the first frame update
@@ -36,30 +42,43 @@ public class RegisterSwap : MonoBehaviour
     {
         //start on customer screen, set corresponding backgrounds, gameobjects, and buttons to t/f
 
-        backroom.gameObject.SetActive(false);
-        register.gameObject.SetActive(true);
+        //backroom.gameObject.SetActive(false);
+        //register.gameObject.SetActive(true);
         
         registerButton.gameObject.SetActive(false);
         backroomButton.gameObject.SetActive(true);
 
-        registerBackground.gameObject.SetActive(true);
-        backroomBackground.gameObject.SetActive(false);
+        //registerBackground.gameObject.SetActive(true);
+        //backroomBackground.gameObject.SetActive(false);
 
     }
 
+    public void Update(){
+        if(SwitchingToBackroom){
+            gameplayCamera.transform.position = Vector3.Lerp(gameplayCamera.transform.position, backroomTransform.position, lerpSpeed * Time.deltaTime);
+        }
+        if(SwitchingToRegister){
+            gameplayCamera.transform.position = Vector3.Lerp(gameplayCamera.transform.position, registerTransform.position, lerpSpeed * Time.deltaTime);
+        }
+    }
     
     //swaps screen to register
     public void registerChange()
     {
         //screenSwap = true;
-        backroom.gameObject.SetActive(false);
-        register.gameObject.SetActive(true);
+        //backroom.gameObject.SetActive(false);
+        //register.gameObject.SetActive(true);
         
         registerButton.gameObject.SetActive(false);
         backroomButton.gameObject.SetActive(true);
 
-        registerBackground.gameObject.SetActive(true);
-        backroomBackground.gameObject.SetActive(false);
+        //registerBackground.gameObject.SetActive(true);
+        //backroomBackground.gameObject.SetActive(false);
+
+        SwitchingToRegister = true;
+        SwitchingToBackroom = false;
+
+        //gameplayCamera.transform.position = Vector3.Lerp(gameplayCamera.transform.position, registerTransform.position, lerpSpeed * Time.deltaTime);
 
         Debug.Log("screen changed to register");
     }
@@ -68,15 +87,22 @@ public class RegisterSwap : MonoBehaviour
     public void backroomChange()
     {
         //screenSwap = false;
-        register.gameObject.SetActive(false);
-        backroom.gameObject.SetActive(true);
+        //register.gameObject.SetActive(false);
+        //backroom.gameObject.SetActive(true);
 
         backroomButton.gameObject.SetActive(false);
         registerButton.gameObject.SetActive(true);
 
-        registerBackground.gameObject.SetActive(false);
-        backroomBackground.gameObject.SetActive(true);
+        //registerBackground.gameObject.SetActive(false);
+        //backroomBackground.gameObject.SetActive(true);
+
+        SwitchingToBackroom = true;
+        SwitchingToRegister = false;
+
+        //gameplayCamera.transform.position = Vector3.Lerp(gameplayCamera.transform.position, backroomTransform.position, lerpSpeed * Time.deltaTime);
 
         Debug.Log("screen changed to backroom");
     }
+
+
 }
