@@ -22,7 +22,7 @@ public class CustomerManager : MonoBehaviour
     public GameObject registerParent;
 
     //ui vars
-    public GameObject orderUI;
+    //public GameObject orderUI;
     public GameObject happinessUI;
     public GameObject feedbackUI;
     public GameObject SuccessUI;
@@ -86,7 +86,7 @@ public class CustomerManager : MonoBehaviour
            
             happinessUI.SetActive(true);
             feedbackUI.SetActive(true);
-            orderUI.SetActive(true);
+            //orderUI.SetActive(true);
             
 
             //starts the timer at a random number every spawn
@@ -110,7 +110,7 @@ public class CustomerManager : MonoBehaviour
             Debug.Log("customer despawning!!!");
 
             happinessUI.SetActive(false);
-            orderUI.SetActive(false);
+            //orderUI.SetActive(false);
 
             
 

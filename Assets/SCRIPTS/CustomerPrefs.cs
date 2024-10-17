@@ -8,6 +8,8 @@ public class CustomerPrefs : MonoBehaviour
 {
     public string targetObjectName = "Potion1prefab"; // Set this to the name of the specific game object
 
+
+
     //private string SuccessUIObjectName = "SuccessUI";
     //private string FailureUIObjectName = "FailureUI";
 
@@ -33,18 +35,17 @@ public class CustomerPrefs : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //Display 1st ingredient in speech bubble
 
-        //Display 2nd ingredient in speech bubble
 
-        //Display finished product in speech bubble
-
+        //Display wanted potion in speech bubble
+  
         
         customerManager = FindObjectOfType<CustomerManager>();
 
         
     }
 
+ 
     
     void OnTriggerStay2D(Collider2D collision)
     {
