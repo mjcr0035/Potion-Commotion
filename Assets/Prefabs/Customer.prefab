@@ -94,7 +94,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9786894d3239d074db38910964465bb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetObjectName: Potion1prefab(Clone)
+  targetObjectName: Potion1(Clone)
   customerManager: {fileID: 0}
 --- !u!50 &544461758925127664
 Rigidbody2D:

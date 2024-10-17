@@ -6,8 +6,9 @@ using UnityEngine;
 
 public class CustomerPrefs : MonoBehaviour
 {
-    public string targetObjectName = "Potion1prefab"; // Set this to the name of the specific game object
+    public string targetObjectName = "Potion1"; // Set this to the name of the specific game object
 
+    //targetobject[""] = potion1 potion2 potion3 
 
 
     //private string SuccessUIObjectName = "SuccessUI";
