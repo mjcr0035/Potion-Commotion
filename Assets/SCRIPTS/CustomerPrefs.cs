@@ -6,58 +6,35 @@ using UnityEngine;
 
 public class CustomerPrefs : MonoBehaviour
 {
-    public string targetObjectName = "Potion1"; // Set this to the name of the specific game object
-
-    //targetobject[""] = potion1 potion2 potion3 
-
-
-    //private string SuccessUIObjectName = "SuccessUI";
-    //private string FailureUIObjectName = "FailureUI";
-
-    //NOTE: this is not the final way of doing this, just kind of grabbing refs to UI elements for the sake of the prototype -Jackson
     
+    public string requestedPotion;
 
-    //public CanvasRenderer successImage;
-    //public CanvasRenderer failureImage;
-        
     public CustomerManager customerManager;
 
-    
+    [SerializeField] Sprite[] potionImages;
 
-    //--
-    //matthew:
-    //customer order UI stuff should be added here so that customer prefabs come with their orders by default!?
-    //if not we can create a separate script for order randomization and tweak the script in here from that order script.
-    //public SpriteRenderer OrderUISprite;
-    //--
+    [SerializeField] SpriteRenderer spriteRenderer;
 
-
+    int randomNumber;
 
     // Start is called before the first frame update
     void Start()
     {
-
-
-        //Display wanted potion in speech bubble
-  
         
         customerManager = FindObjectOfType<CustomerManager>();
-
         
-    }
+        randomPotion();
 
- 
+    }
     
     void OnTriggerStay2D(Collider2D collision)
     {
         // Check if the colliding object's name matches the specified name
-        if (collision.gameObject.name == targetObjectName)
+        if (collision.gameObject.name == requestedPotion)
         {
-            //Correct Potion
-            Debug.Log("Potion Received! Colliding with the target object: " + collision.gameObject.name);
-
-            //StartCoroutine(HideAndShow(SuccessUIObjectName));
-
+            //Correct potion received
+            Debug.Log(collision.gameObject.name + " Received!");
+                        
 
             customerManager.OrderCorrect();
 
@@ -66,8 +43,7 @@ public class CustomerPrefs : MonoBehaviour
                     {
                         Destroy(obj); // Destroy any existing potions in the scene
                     }
-
-            
+                        
 
             customerManager.StartCoroutine("DespawnCustomer");
             
@@ -79,9 +55,7 @@ public class CustomerPrefs : MonoBehaviour
             Debug.Log("Incorrect Potion!");
 
             customerManager.OrderIncorrect();
-            
-            //StartCoroutine(HideAndShow(FailureUIObjectName));
-
+                      
 
             foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Potion"))
                     {
@@ -89,42 +63,21 @@ public class CustomerPrefs : MonoBehaviour
                     }
 
             
-
             customerManager.StartCoroutine("DespawnCustomer");
 
         }
     }
 
-    //private IEnumerator HideAndShow(string objectName)
-    //{
-    //    // Find the GameObject by name
-    //    GameObject targetObject = GameObject.Find(objectName);
-    //    
-    //    // Check if the object was found
-    //    if (targetObject != null)
-    //    {
-    //        // Hide the GameObject by disabling its Renderer
-    //        Renderer renderer = targetObject.GetComponent<Renderer>();
-    //        if (renderer != null)
-    //        {
-    //            renderer.enabled = false;
-    //            Debug.Log(objectName + " has been hidden.");
-    //        }
-    //
-    //        // Wait for 3 seconds
-    //        yield return new WaitForSeconds(3f);
-    //
-    //        // Show the GameObject by enabling its Renderer
-    //        if (renderer != null)
-    //        {
-    //            renderer.enabled = true;
-    //            Debug.Log(objectName + " has been shown.");
-    //        }
-    //    }
-    //    else
-    //    {
-    //        Debug.LogWarning("GameObject with name " + objectName + " not found.");
-    //    }
-    //}
+    void randomPotion()
+    {
+        randomNumber = Random.Range(0, potionImages.Length);
+        spriteRenderer.sprite = potionImages[randomNumber];
+
+        requestedPotion = spriteRenderer.sprite.name + "(Clone)";
+
+        Debug.Log(requestedPotion);
+
+    }
+
 
 }

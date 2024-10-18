@@ -6,13 +6,13 @@ TagManager:
   tags:
   - Ingredient
   - Pot
-  - Counter
   - GameplayCamera
   - Customer
   - Potion
   - CustomerManager
   - SuccessUI
   - FailureUI
+  - Conveyor
   layers:
   - Default
   - TransparentFX

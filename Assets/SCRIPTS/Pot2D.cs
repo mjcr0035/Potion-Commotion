@@ -10,17 +10,18 @@ public class Pot2D : MonoBehaviour
     {
         { new HashSet<string> { "Ingredient1", "Ingredient2" }, "Potion1" },
         { new HashSet<string> { "Ingredient3", "Ingredient2" }, "Potion2" },
+        { new HashSet<string> { "Ingredient1", "Ingredient3" }, "Potion3" },
     };
 
     private HashSet<HashSet<string>> recipeExceptions = new HashSet<HashSet<string>>()
     {
-        new HashSet<string> { "Ingredient1", "Ingredient3" }
+        //new HashSet<string> { "Ingredient1", "Ingredient3" }
     };
 
     public Dictionary<string, GameObject> recipePrefabs = new Dictionary<string, GameObject>();
-    public GameObject Potion1prefab;
-    public GameObject Potion2prefab;
-    public GameObject PepperSunprefab;
+    public GameObject Potion1;
+    public GameObject Potion2;
+    public GameObject Potion3;
 
     private bool isRecipeBeingProcessed = false;
 
@@ -31,9 +32,9 @@ public class Pot2D : MonoBehaviour
 
     void Start()
     {
-        recipePrefabs["Potion1"] = Potion1prefab;
-        recipePrefabs["Potion2"] = Potion2prefab;
-        recipePrefabs["PepperSun"] = PepperSunprefab;
+        recipePrefabs["Potion1"] = Potion1;
+        recipePrefabs["Potion2"] = Potion2;
+        recipePrefabs["Potion3"] = Potion3;
     }
 
     void Update()
@@ -50,15 +51,18 @@ public class Pot2D : MonoBehaviour
             if (ingredientScript != null && !ingredientScript.hasBeenAdded)
             {
                 Debug.Log("Ingredient " + other.gameObject.name + " added to the pot!");
+
                 ingredientScript.hasBeenAdded = true;
                 addedIngredients.Add(other.gameObject.name);
                 other.GetComponent<DragIngredient2D>().ReturnToOriginalPosition();
 
                 Debug.Log("Current ingredients in pot: " + string.Join(", ", addedIngredients));
+
                 if (!isRecipeBeingProcessed)
                 {
                     CheckForRecipe();
                 }
+
             }
             else
             {
@@ -87,12 +91,14 @@ public class Pot2D : MonoBehaviour
             if (recipe.Key.SetEquals(addedIngredients))
             {
                 Debug.Log("Recipe match found: " + string.Join(", ", recipe.Key));
+
                 //isSwirling = true;  // Now you need to swirl to create the potion
                 isRecipeBeingProcessed = true;
                 CreateNewItem(recipe.Value);
                 return;
             }
         }
+        
         Debug.Log("No matching recipe found.");
     }
 
@@ -114,6 +120,7 @@ public class Pot2D : MonoBehaviour
 
         addedIngredients.Clear();
         DragIngredient2D[] allIngredients = FindObjectsOfType<DragIngredient2D>();
+
         foreach (DragIngredient2D ingredient in allIngredients)
         {
             ingredient.hasBeenAdded = false;
@@ -175,6 +182,7 @@ public class Pot2D : MonoBehaviour
             }
         }
     }
+
     void ResetIngredients()
     {
         Debug.Log("Resetting ingredients...");

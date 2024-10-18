@@ -94,8 +94,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9786894d3239d074db38910964465bb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetObjectName: Potion1(Clone)
+  requestedPotion: {fileID: 0}
   customerManager: {fileID: 0}
+  potionImages:
+  - {fileID: 21300000, guid: a7f38cabbddcab3498697c5a1b6c960b, type: 3}
+  - {fileID: 21300000, guid: e1aa2d6775e6c764494d3d706f35a1d2, type: 3}
+  - {fileID: 21300000, guid: f65cd9fb600b2034c9190cf675b7b0e6, type: 3}
+  spriteRenderer: {fileID: 5815488670958051539}
 --- !u!50 &544461758925127664
 Rigidbody2D:
   serializedVersion: 4
@@ -291,7 +296,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6385771151938254834}
   - component: {fileID: 5815488670958051539}
-  - component: {fileID: 5006756239942673919}
   m_Layer: 3
   m_Name: PotionOrders
   m_TagString: Untagged
@@ -366,19 +370,3 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &5006756239942673919
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5499600137545894405}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a33fd2ad4021d3438ef530ece151474, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  potionImages:
-  - {fileID: 21300000, guid: a7f38cabbddcab3498697c5a1b6c960b, type: 3}
-  - {fileID: 21300000, guid: e1aa2d6775e6c764494d3d706f35a1d2, type: 3}
-  spriteRenderer: {fileID: 5815488670958051539}

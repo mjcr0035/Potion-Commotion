@@ -35,7 +35,7 @@ public class DraggableObject : MonoBehaviour
     private void OnTriggerStay2D(Collider2D other)
     {
         // Check if the object is not being dragged and it's inside the collider with the specified tag
-        if (!isDragging && other.CompareTag("Counter"))
+        if (!isDragging && other.CompareTag("Conveyor"))
         {
             // Move the object to the left smoothly over time
             transform.position = new Vector2(transform.position.x - moveDistance * Time.deltaTime * movementSpeed, transform.position.y);

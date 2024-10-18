@@ -110,9 +110,6 @@ public class CustomerManager : MonoBehaviour
             Debug.Log("customer despawning!!!");
 
             happinessUI.SetActive(false);
-            //orderUI.SetActive(false);
-
-            
 
             customerAC.SetTrigger("Despawn");
 
