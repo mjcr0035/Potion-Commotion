@@ -11,17 +11,21 @@ public class Pot2D : MonoBehaviour
         { new HashSet<string> { "Ingredient1", "Ingredient2" }, "Potion1" },
         { new HashSet<string> { "Ingredient3", "Ingredient2" }, "Potion2" },
         { new HashSet<string> { "Ingredient1", "Ingredient3" }, "Potion3" },
+         { new HashSet<string> { "Ingredient4", "Ingredient3" }, "Potion4" },
     };
 
     private HashSet<HashSet<string>> recipeExceptions = new HashSet<HashSet<string>>()
     {
-        //new HashSet<string> { "Ingredient1", "Ingredient3" }
+        new HashSet<string> { "Ingredient1", "Ingredient4" },
+        new HashSet<string> { "Ingredient2", "Ingredient4" },
+        
     };
 
     public Dictionary<string, GameObject> recipePrefabs = new Dictionary<string, GameObject>();
     public GameObject Potion1;
     public GameObject Potion2;
     public GameObject Potion3;
+    public GameObject Potion4;
 
     private bool isRecipeBeingProcessed = false;
 
@@ -35,6 +39,7 @@ public class Pot2D : MonoBehaviour
         recipePrefabs["Potion1"] = Potion1;
         recipePrefabs["Potion2"] = Potion2;
         recipePrefabs["Potion3"] = Potion3;
+        recipePrefabs["Potion4"] = Potion4;
     }
 
     void Update()
@@ -100,6 +105,7 @@ public class Pot2D : MonoBehaviour
         }
         
         Debug.Log("No matching recipe found.");
+        
     }
 
     bool CheckForExceptions()
