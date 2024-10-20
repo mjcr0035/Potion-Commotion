@@ -17,6 +17,8 @@ public class CustomerPrefs : MonoBehaviour
 
     int randomNumber;
 
+    public GameObject targetObject;  //Speech Bubble Toggle
+
     // Start is called before the first frame update
     void Start()
     {
@@ -77,6 +79,15 @@ public class CustomerPrefs : MonoBehaviour
 
         Debug.Log(requestedPotion);
 
+    }
+
+    void OnMouseDown()
+    {
+        // Make the target object visible when the sprite is clicked
+        if (targetObject != null)
+        {
+            targetObject.SetActive(true);  // Set the object to active/visible
+        }
     }
 
 

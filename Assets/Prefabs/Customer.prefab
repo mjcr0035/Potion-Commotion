@@ -69,7 +69,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0053621233, y: 0.4388738}
+  m_Offset: {x: -0.08939779, y: 0.86002827}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -80,7 +80,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.58175045, y: 0.838309}
+  m_Size: {x: 4.014161, y: 5.2183194}
   m_EdgeRadius: 0
 --- !u!114 &284401931744761348
 MonoBehaviour:
@@ -94,13 +94,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9786894d3239d074db38910964465bb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  requestedPotion: {fileID: 0}
+  requestedPotion: 
   customerManager: {fileID: 0}
   potionImages:
   - {fileID: 21300000, guid: a7f38cabbddcab3498697c5a1b6c960b, type: 3}
   - {fileID: 21300000, guid: e1aa2d6775e6c764494d3d706f35a1d2, type: 3}
   - {fileID: 21300000, guid: f65cd9fb600b2034c9190cf675b7b0e6, type: 3}
   spriteRenderer: {fileID: 5815488670958051539}
+  targetObject: {fileID: 3106274456587873758}
 --- !u!50 &544461758925127664
 Rigidbody2D:
   serializedVersion: 4
@@ -217,7 +218,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &831683536564417853
 Transform:
   m_ObjectHideFlags: 0
