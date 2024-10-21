@@ -9,12 +9,24 @@ public class DraggableObject : MonoBehaviour
     public float moveDistance = 100.0f;  // Distance to move to the left
     public float movementSpeed = 2.0f; // Speed at which the object will move
 
+    public SoundManager soundManager;
+
+    void Start()
+    {
+        if (soundManager == null)
+        {
+            soundManager = FindObjectOfType<SoundManager>(); // Find the SoundManager if not assigned
+        }
+        soundManager.PlaySound(0);
+    }
+
     // Called when the mouse is pressed down on the object
     private void OnMouseDown()
     {
         offset = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
         offset.z = 0;
         isDragging = true;
+        soundManager.PlaySound(1);
     }
 
     // Called when the mouse is dragging the object
@@ -49,6 +61,7 @@ public class DraggableObject : MonoBehaviour
             
         }
     }
+
 }
 
 

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5937159668334623784}
   - component: {fileID: 8986117794627625345}
   - component: {fileID: 7264764920256611746}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Potion1
   m_TagString: Potion
   m_Icon: {fileID: 0}
@@ -173,3 +173,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveDistance: 1
   movementSpeed: 2
+  soundManager: {fileID: 0}

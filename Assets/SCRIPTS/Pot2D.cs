@@ -34,12 +34,17 @@ public class Pot2D : MonoBehaviour
     private Vector2 lastMousePosition;
     private bool inFirstQuadrant = false;
 
+    public AudioClip[] soundClips; //array of clips
+    private AudioSource audioSource;
+
     void Start()
     {
         recipePrefabs["Potion1"] = Potion1;
         recipePrefabs["Potion2"] = Potion2;
         recipePrefabs["Potion3"] = Potion3;
         recipePrefabs["Potion4"] = Potion4;
+
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -56,6 +61,7 @@ public class Pot2D : MonoBehaviour
             if (ingredientScript != null && !ingredientScript.hasBeenAdded)
             {
                 Debug.Log("Ingredient " + other.gameObject.name + " added to the pot!");
+                PlaySound(0);
 
                 ingredientScript.hasBeenAdded = true;
                 addedIngredients.Add(other.gameObject.name);
@@ -135,6 +141,7 @@ public class Pot2D : MonoBehaviour
         if (recipePrefabs.ContainsKey(newItem))
         {
             Instantiate(recipePrefabs[newItem], transform.position, Quaternion.identity);
+            PlaySound(1);
         }
         else
         {
@@ -215,6 +222,12 @@ public class Pot2D : MonoBehaviour
         isRecipeBeingProcessed = false;
         isSwirling = false;
         swirlCount = 0;
+    }
+
+    public void PlaySound(int clipIndex){ //plays given sound
+        if (clipIndex >= 0 && clipIndex < soundClips.Length){
+            audioSource.PlayOneShot(soundClips[clipIndex]);
+        }
     }
 }
 
