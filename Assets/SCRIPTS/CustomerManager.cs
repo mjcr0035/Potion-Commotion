@@ -43,24 +43,55 @@ public class CustomerManager : MonoBehaviour
     
     public int potionVal;
 
+    //spawner vars
+    [SerializeField] public float waveCountdown;
+    private bool readyToCountDown;
+    public GameObject endText;
+
+
     private void Start()
     {
         FailureUI.SetActive(false);
         SuccessUI.SetActive(false);
         moneyGainedText.enabled = false;
+
+        readyToCountDown = true;
+        
     }
 
     // Update is called once per frame
     void Update()
     {
         //temporary customer spawner until we figure out how we want days to work and stuff
-        //could make this an on screen button instead so it works on mobile
-        if (Input.GetKeyDown(KeyCode.Space))
+
+      //if (Input.GetKeyDown(KeyCode.Space))
+      //{
+      //    SpawnCustomer();
+      //}
+
+        if (readyToCountDown == true)
         {
+            waveCountdown -= Time.deltaTime;
+        }
+
+        if (waveCountdown <= 0)
+        {
+            readyToCountDown = false;
             SpawnCustomer();
         }
 
     }
+
+
+
+    //matthew - day system:
+    //on start, begin day timer
+    //spawn waves of customers at random set points in waves, in the day
+    //increment a day timer and time customer spawns to last the whole day
+    //waves become more 'intense' as you go by making the timers shorter
+    //^might not include for now because timers are still bugged. will have to fix happiness timer very soon
+    //temporary fix:
+    //spawns a few customers from customerprefabs then sends to main menu?
 
     public void SpawnCustomer()
     {
@@ -68,9 +99,11 @@ public class CustomerManager : MonoBehaviour
         //assigns customer animator and sprite renderer
         //activates order, timer, and feedback ui
         //triggers happiness timer
-                
+        
         if (customerPrefabs != null && !newCustomer)
         {
+            //put customer click to order in here to make sure timer starts after you take their order?
+
             //this is messy but if it works it works..........
             FailureUI.SetActive(false);
             SuccessUI.SetActive(false);
@@ -107,6 +140,8 @@ public class CustomerManager : MonoBehaviour
 
         if (newCustomer)
         {
+            waveCountdown = Random.Range(4, 8);
+            readyToCountDown = true;
             Debug.Log("customer despawning!!!");
 
             happinessUI.SetActive(false);
@@ -146,6 +181,7 @@ public class CustomerManager : MonoBehaviour
         moneyGainedText.text = "+ " + moneyGained.ToString() + " GOLD";
         moneyTotalText.text = moneyTotal.ToString() + " G";
     }
+    
     public void OrderIncorrect()
     {
         FailureUI.SetActive(true);

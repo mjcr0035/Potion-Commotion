@@ -4148,7 +4148,7 @@ MonoBehaviour:
   happinessBarFill: {fileID: 1995290266}
   happinessTimerUI: {fileID: 121955010}
   customerManager: {fileID: 1914457447}
-  duration: 10
+  duration: 20
   remainingDuration: 0
   timerActive: 0
 --- !u!1 &1756829514
@@ -4190,6 +4190,7 @@ MonoBehaviour:
   backroomBackground: {fileID: 0}
   gameplayCamera: {fileID: 1805695884}
   lerpSpeed: 5
+  soundManager: {fileID: 0}
 --- !u!4 &1756829516
 Transform:
   m_ObjectHideFlags: 0
@@ -4428,6 +4429,9 @@ MonoBehaviour:
   customerSprite: {fileID: 0}
   customerPrefabs:
   - {fileID: 2429268544715530355, guid: e41b46620da8c8d40af8d6a49a1e828c, type: 3}
+  - {fileID: 2429268544715530355, guid: 414b1519195639941a48529004bdb45a, type: 3}
+  - {fileID: 2429268544715530355, guid: 68f9638cb4b4c9e4caf5aff7fcfa78c0, type: 3}
+  - {fileID: 2429268544715530355, guid: ae4611b144309c54eafdb7a924ad6099, type: 3}
   registerParent: {fileID: 1159541521}
   happinessUI: {fileID: 121955010}
   feedbackUI: {fileID: 956748483}
@@ -4440,6 +4444,8 @@ MonoBehaviour:
   moneyGainedText: {fileID: 1621968059}
   moneyTotalText: {fileID: 207728611}
   potionVal: 0
+  waveCountdown: 5
+  endText: {fileID: 0}
 --- !u!4 &1914457448
 Transform:
   m_ObjectHideFlags: 0
