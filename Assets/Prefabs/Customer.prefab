@@ -97,12 +97,10 @@ MonoBehaviour:
   requestedPotion: 
   customerManager: {fileID: 0}
   potionImages:
-  - {fileID: 21300000, guid: a7f38cabbddcab3498697c5a1b6c960b, type: 3}
-  - {fileID: 21300000, guid: e1aa2d6775e6c764494d3d706f35a1d2, type: 3}
-  - {fileID: 21300000, guid: f65cd9fb600b2034c9190cf675b7b0e6, type: 3}
-  - {fileID: 21300000, guid: f65cd9fb600b2034c9190cf675b7b0e6, type: 3}
+  - {fileID: 21300000, guid: ec8fdff5331898040b2a88d0513a8530, type: 3}
   spriteRenderer: {fileID: 5815488670958051539}
   targetObject: {fileID: 3106274456587873758}
+  soundManager: {fileID: 0}
 --- !u!50 &544461758925127664
 Rigidbody2D:
   serializedVersion: 4
