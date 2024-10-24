@@ -52,14 +52,6 @@ public class DraggableObject : MonoBehaviour
             // Move the object to the left smoothly over time
             transform.position = new Vector2(transform.position.x - moveDistance * Time.deltaTime * movementSpeed, transform.position.y);
         }
-
-        // Check if the object was dragged to the customer
-        if (!isDragging && other.CompareTag("Customer"))
-        {
-            //debug if recieved
-            //Debug.Log("Potion Delivered");
-            
-        }
     }
 
 }

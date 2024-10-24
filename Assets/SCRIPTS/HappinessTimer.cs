@@ -33,8 +33,6 @@ public class HappinessTimer : MonoBehaviour
         //starts the happiness timer, then activates the happiness ui element and starts the update coroutine
         timerActive = true;
 
-        //duration
-
         happinessTimerUI.SetActive(true);
 
         remainingDuration = duration;
@@ -46,7 +44,7 @@ public class HappinessTimer : MonoBehaviour
     private IEnumerator UpdateHappinessBar()
     {
         //counts down from inputted duration, and updates the ui correspondingly
-        while (remainingDuration >= 1 && customerManager.newCustomer && timerActive)
+        while (remainingDuration >= 1 && timerActive)
         {
             happinessBarFill.fillAmount = Mathf.InverseLerp(0, duration, remainingDuration);
 
@@ -58,9 +56,10 @@ public class HappinessTimer : MonoBehaviour
         }
 
         //waits for five seconds after the timer is depleted before actually leaving
-        yield return new WaitForSeconds(5);
-        StartCoroutine(customerManager.DespawnCustomer());
         StopHappinessTimer();
+        yield return new WaitForSeconds(3);
+        StartCoroutine(customerManager.DespawnCustomer());
+        
     }
 
 

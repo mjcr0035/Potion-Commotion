@@ -111,6 +111,8 @@ public class CustomerManager : MonoBehaviour
             int customerSpawnIndex = Random.Range(0, customerPrefabs.Length);
             Instantiate(customerPrefabs[customerSpawnIndex], registerParent.transform);
 
+            //happinessTimer.customerImpatient = false;
+
             newCustomer = GameObject.FindWithTag("Customer");
 
             customerSprite = newCustomer.GetComponent<SpriteRenderer>();
@@ -140,12 +142,15 @@ public class CustomerManager : MonoBehaviour
 
         if (newCustomer)
         {
+            happinessTimer.StopHappinessTimer();
+
+            //waits for a few seconds before despawning when timer drains
+            //yield return new WaitForSeconds(3);
+
             waveCountdown = Random.Range(4, 8);
             readyToCountDown = true;
             Debug.Log("customer despawning!!!");
-
-            happinessTimer.StopHappinessTimer();
-
+            
             customerAC.SetTrigger("Despawn");
 
             yield return new WaitForSeconds(2);

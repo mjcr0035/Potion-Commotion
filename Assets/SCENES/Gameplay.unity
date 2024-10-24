@@ -4147,7 +4147,7 @@ MonoBehaviour:
   happinessBarFill: {fileID: 1995290266}
   happinessTimerUI: {fileID: 121955010}
   customerManager: {fileID: 1914457447}
-  duration: 20
+  duration: 10
   remainingDuration: 0
   timerActive: 0
 --- !u!1 &1756829514
@@ -4179,14 +4179,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 214efe803fa7da34c9c389859f2342c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  register: {fileID: 1159541521}
-  backroom: {fileID: 192455561}
   registerButton: {fileID: 1191385026}
   backroomButton: {fileID: 451172743}
   registerTransform: {fileID: 300550891}
   backroomTransform: {fileID: 942845}
-  registerBackground: {fileID: 0}
-  backroomBackground: {fileID: 0}
   gameplayCamera: {fileID: 1805695884}
   lerpSpeed: 5
   soundManager: {fileID: 0}
@@ -4436,6 +4432,7 @@ MonoBehaviour:
   feedbackUI: {fileID: 956748483}
   SuccessUI: {fileID: 71684420}
   FailureUI: {fileID: 2022295109}
+  newCustomer: {fileID: 0}
   customerHappiness: 15
   happinessTimer: {fileID: 1666720745}
   moneyGained: 0
@@ -4786,8 +4783,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Eyeball + Cloud = \nRed Potion\nCloud + Triangle = \nGreen Potion\nEyeball
-    + Triangle = \nWhite Potion\nRed + Black =\nRedBlackPotion"
+  m_text: "Eyeball + Cloud = \nRed Potion\nCloud + R_Triangle = \nGreen Potion\nEyeball
+    + B_Triangle = \nWhite Potion\nRed + Black =\nPurple"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2a9076049b4e2e946a405285ea9b38f1, type: 2}
   m_sharedMaterial: {fileID: -4914913565782788009, guid: 2a9076049b4e2e946a405285ea9b38f1, type: 2}
