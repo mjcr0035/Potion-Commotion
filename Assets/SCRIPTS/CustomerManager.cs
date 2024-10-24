@@ -29,7 +29,7 @@ public class CustomerManager : MonoBehaviour
     public GameObject FailureUI;
     
 
-    private GameObject newCustomer;
+    public GameObject newCustomer;
 
     //happiness vars
     public int customerHappiness;
@@ -124,7 +124,7 @@ public class CustomerManager : MonoBehaviour
 
             //starts the timer at a random number every spawn
             //happinessTimer.StartHappinessTimer(Random.Range(7,10));
-            happinessTimer.StartHappinessTimer(10);
+            happinessTimer.StartHappinessTimer(happinessTimer.duration);
 
             
                        
@@ -144,7 +144,7 @@ public class CustomerManager : MonoBehaviour
             readyToCountDown = true;
             Debug.Log("customer despawning!!!");
 
-            happinessUI.SetActive(false);
+            happinessTimer.StopHappinessTimer();
 
             customerAC.SetTrigger("Despawn");
 
