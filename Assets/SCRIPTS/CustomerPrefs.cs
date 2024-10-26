@@ -19,20 +19,16 @@ public class CustomerPrefs : MonoBehaviour
 
     public GameObject targetObject;  //Speech Bubble Toggle
 
-    public SoundManager soundManager;
+    
 
     // Start is called before the first frame update
     void Start()
     {
-        if (soundManager == null)
-        {
-            soundManager = FindObjectOfType<SoundManager>(); // Find the SoundManager if not assigned
-        }
+       
 
         customerManager = FindObjectOfType<CustomerManager>();
         
-        soundManager.PlaySound(2);
-        soundManager.PlaySound(3);
+        
         randomPotion();
 
     }
@@ -44,9 +40,7 @@ public class CustomerPrefs : MonoBehaviour
         {
             //Correct potion received
             Debug.Log(collision.gameObject.name + " Received!");
-            soundManager.PlaySound(4);
-            soundManager.PlaySound(5);
-                        
+           
 
             customerManager.OrderCorrect();
 
@@ -66,8 +60,6 @@ public class CustomerPrefs : MonoBehaviour
             //Wrong Potion
             Debug.Log("Incorrect Potion!");
 
-            soundManager.PlaySound(4);
-            soundManager.PlaySound(6);
 
             customerManager.OrderIncorrect();
                       

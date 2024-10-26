@@ -19,7 +19,7 @@ public class RegisterSwap : MonoBehaviour
     bool SwitchingToRegister = false;
     bool SwitchingToBackroom = false;
 
-    public SoundManager soundManager;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -28,10 +28,7 @@ public class RegisterSwap : MonoBehaviour
         registerButton.gameObject.SetActive(false);
         backroomButton.gameObject.SetActive(true);
 
-        if (soundManager == null)
-        {
-            soundManager = FindObjectOfType<SoundManager>(); // Find the SoundManager if not assigned
-        }
+        
 
     }
 
@@ -62,7 +59,7 @@ public class RegisterSwap : MonoBehaviour
 
         //gameplayCamera.transform.position = Vector3.Lerp(gameplayCamera.transform.position, registerTransform.position, lerpSpeed * Time.deltaTime);
 
-        soundManager.PlaySound(7);
+        
         Debug.Log("screen changed to register");
     }
 
@@ -78,7 +75,7 @@ public class RegisterSwap : MonoBehaviour
 
         //gameplayCamera.transform.position = Vector3.Lerp(gameplayCamera.transform.position, backroomTransform.position, lerpSpeed * Time.deltaTime);
 
-        soundManager.PlaySound(7);
+       
         Debug.Log("screen changed to backroom");
     }
 
