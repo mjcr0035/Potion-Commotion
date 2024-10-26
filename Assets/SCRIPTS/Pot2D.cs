@@ -26,6 +26,7 @@ public class Pot2D : MonoBehaviour
     public GameObject Potion2;
     public GameObject Potion3;
     public GameObject Potion4;
+    public GameObject SwirlingReady;
 
     private bool isRecipeBeingProcessed = false;
 
@@ -49,7 +50,7 @@ public class Pot2D : MonoBehaviour
 
     void Update()
     {
-        //DetectSwirl();
+        DetectSwirl();
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -102,10 +103,11 @@ public class Pot2D : MonoBehaviour
             if (recipe.Key.SetEquals(addedIngredients))
             {
                 Debug.Log("Recipe match found: " + string.Join(", ", recipe.Key));
+                SwirlingReady.SetActive(true);
 
-                //isSwirling = true;  // Now you need to swirl to create the potion
+                isSwirling = true;  // Now you need to swirl to create the potion
                 isRecipeBeingProcessed = true;
-                CreateNewItem(recipe.Value);
+                //CreateNewItem(recipe.Value);
                 return;
             }
         }
@@ -158,11 +160,23 @@ public class Pot2D : MonoBehaviour
     {
         if (Input.GetMouseButton(0) && isSwirling)
         {
+            // Get the current mouse position in world coordinates
             Vector2 currentMousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-            if (GetComponent<Collider2D>().bounds.Contains(currentMousePosition))
+            // Get the collider bounds of the pot and log them
+            Collider2D potCollider = GetComponent<Collider2D>();
+            Bounds potBounds = potCollider.bounds;
+
+            Debug.Log($"Mouse Position: {currentMousePosition}, Pot Bounds: {potBounds}");
+
+            // Check if the mouse position is within the pot's collider bounds
+            if (potBounds.Contains(currentMousePosition))
             {
-                float angle = Vector2.SignedAngle(lastMousePosition, currentMousePosition);
+                Debug.Log("Mouse is inside the pot collider.");
+
+                // Calculate the swirl angle using the pot's position as reference
+                Vector2 relativePosition = currentMousePosition - (Vector2)transform.position;
+                float angle = Vector2.SignedAngle(lastMousePosition - (Vector2)transform.position, relativePosition);
 
                 if (angle > 20 && angle < 160 && !inFirstQuadrant)
                 {
@@ -174,19 +188,20 @@ public class Pot2D : MonoBehaviour
                     inFirstQuadrant = false;
                     Debug.Log("Swirl detected! Total swirls: " + swirlCount);
 
-                    if (swirlCount >= 1)
+                    if (swirlCount >= 2)
                     {
                         foreach (var recipe in recipes)
                         {
                             if (recipe.Key.SetEquals(addedIngredients))
                             {
                                 CreateNewItem(recipe.Value);
+                                SwirlingReady.SetActive(false);
                                 return;
                             }
                         }
                     }
                 }
-
+                // Update last position
                 lastMousePosition = currentMousePosition;
             }
             else
@@ -195,6 +210,7 @@ public class Pot2D : MonoBehaviour
             }
         }
     }
+
 
     void ResetIngredients()
     {
