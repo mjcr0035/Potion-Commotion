@@ -196,6 +196,10 @@ public class Pot2D : MonoBehaviour
                             {
                                 CreateNewItem(recipe.Value);
                                 SwirlingReady.SetActive(false);
+                                foreach (GameObject obj in GameObject.FindGameObjectsWithTag("Potion"))
+                                {
+                                    Destroy(obj); // Destroy any existing potions in the scene
+                                }
                                 return;
                             }
                         }

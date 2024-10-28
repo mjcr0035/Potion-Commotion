@@ -44,8 +44,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57585f1e411a3934da8609e556907714, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelsCompleted: 0
-  levelOneScore: 0
-  levelTwoScore: 0
-  levelThreeScore: 0
-  endlessUnlock: 0
+  levelOneSelected: 0
+  levelTwoSelected: 0
+  levelThreeSelected: 0
+  endlessSelected: 0
+  sceneName: Gameplay
+  levelsObject: {fileID: 0}
+  totalGold: 0
+  levelOneGold: 0
+  levelTwoGold: 0
+  levelThreeGold: 0
+  endlessGold: 0

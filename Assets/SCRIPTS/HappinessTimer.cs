@@ -55,7 +55,7 @@ public class HappinessTimer : MonoBehaviour
             yield return null;
         }
 
-        //waits for five seconds after the timer is depleted before actually leaving
+        //waits for a few seconds after the timer is depleted before actually leaving
         StopHappinessTimer();
         yield return new WaitForSeconds(3);
         StartCoroutine(customerManager.DespawnCustomer());

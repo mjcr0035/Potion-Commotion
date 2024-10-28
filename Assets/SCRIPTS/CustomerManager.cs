@@ -35,6 +35,9 @@ public class CustomerManager : MonoBehaviour
     public int customerHappiness;
     public HappinessTimer happinessTimer;
 
+    public GameManager gameManager;
+    public DayCycle dayCycle;
+
     //money vars
     public int moneyGained;
     public int moneyTotal;
@@ -85,13 +88,7 @@ public class CustomerManager : MonoBehaviour
 
 
     //matthew - day system:
-    //on start, begin day timer
-    //spawn waves of customers at random set points in waves, in the day
-    //increment a day timer and time customer spawns to last the whole day
-    //waves become more 'intense' as you go by making the timers shorter
-    //^might not include for now because timers are still bugged. will have to fix happiness timer very soon
-    //temporary fix:
-    //spawns a few customers from customerprefabs then sends to main menu?
+    //
 
     public void SpawnCustomer()
     {
@@ -104,14 +101,14 @@ public class CustomerManager : MonoBehaviour
         {
             //put customer click to order in here to make sure timer starts after you take their order?
 
-            //this is messy but if it works it works..........
+            
             FailureUI.SetActive(false);
             SuccessUI.SetActive(false);
 
             int customerSpawnIndex = Random.Range(0, customerPrefabs.Length);
             Instantiate(customerPrefabs[customerSpawnIndex], registerParent.transform);
 
-            //happinessTimer.customerImpatient = false;
+            
 
             newCustomer = GameObject.FindWithTag("Customer");
 
@@ -121,15 +118,29 @@ public class CustomerManager : MonoBehaviour
            
             happinessUI.SetActive(true);
             feedbackUI.SetActive(true);
-            //orderUI.SetActive(true);
-            
 
-            //starts the timer at a random number every spawn
+            //starts the timer at a random number every spawn, patience depends on time of day
+            //if lv1,
             //happinessTimer.StartHappinessTimer(Random.Range(7,10));
-            happinessTimer.StartHappinessTimer(happinessTimer.duration);
+            //if lv2, etc.
+            if (dayCycle.startDay)
+            {
+                happinessTimer.StartHappinessTimer(Random.Range(20, 25));
+            }
+            else if (dayCycle.midDay)
+            {
+                happinessTimer.StartHappinessTimer(Random.Range(15, 20));
 
-            
-                       
+            }
+            else if (dayCycle.endofDay)
+            {
+                happinessTimer.StartHappinessTimer(Random.Range(10, 15));
+            }
+
+            //happinessTimer.StartHappinessTimer(happinessTimer.duration);
+
+
+
         }
         
     }
@@ -144,11 +155,21 @@ public class CustomerManager : MonoBehaviour
         {
             happinessTimer.StopHappinessTimer();
 
-            //waits for a few seconds before despawning when timer drains
-            //yield return new WaitForSeconds(3);
+            if (dayCycle.startDay)
+            {
+                waveCountdown = Random.Range(6, 10);
+            }
+            else if (dayCycle.midDay)
+            {
+                waveCountdown = Random.Range(4, 8);
+            }
+            else if (dayCycle.endofDay)
+            {
+                waveCountdown = Random.Range(2, 4);
+            }
 
-            waveCountdown = Random.Range(4, 8);
             readyToCountDown = true;
+
             Debug.Log("customer despawning!!!");
             
             customerAC.SetTrigger("Despawn");
@@ -196,10 +217,7 @@ public class CustomerManager : MonoBehaviour
 
         potionVal = Random.Range(0, 15);
 
-        moneyGained = potionVal + (10 * Mathf.RoundToInt(happinessTimer.remainingDuration));
-        
-        
-
+        moneyGained = potionVal + (2 * Mathf.RoundToInt(happinessTimer.remainingDuration));
 
         Debug.Log("order incorrect, customer left this much gold:" + moneyGained + " you had this many seconds left: " + happinessTimer.remainingDuration);
         

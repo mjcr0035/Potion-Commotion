@@ -19,7 +19,8 @@ public class CustomerPrefs : MonoBehaviour
 
     public GameObject targetObject;  //Speech Bubble Toggle
 
-    
+    public HappinessTimer happinessTimer;
+
 
     // Start is called before the first frame update
     void Start()

@@ -32,6 +32,7 @@ public class DragIngredient2D : MonoBehaviour
             mousePosition.z = 10; // Set the distance from the camera (this can be adjusted)
             Vector3 worldPosition = Camera.main.ScreenToWorldPoint(mousePosition);
             transform.position = new Vector2(worldPosition.x, worldPosition.y);
+
         }
     }
 
