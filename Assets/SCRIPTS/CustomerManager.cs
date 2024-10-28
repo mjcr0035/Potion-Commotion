@@ -204,8 +204,8 @@ public class CustomerManager : MonoBehaviour
         
         moneyTotal += moneyGained;
 
-        moneyGainedText.text = "+ " + moneyGained.ToString() + " GOLD";
-        moneyTotalText.text = moneyTotal.ToString() + " G";
+        moneyGainedText.text = "+ " + moneyGained.ToString() + " SOL";
+        moneyTotalText.text = moneyTotal.ToString() + " S";
     }
     
     public void OrderIncorrect()
@@ -223,8 +223,8 @@ public class CustomerManager : MonoBehaviour
         
         moneyTotal += moneyGained;
 
-        moneyGainedText.text = "+ " + moneyGained.ToString() + " GOLD";
-        moneyTotalText.text = moneyTotal.ToString() + " G";
+        moneyGainedText.text = "+ " + moneyGained.ToString() + " SOL";
+        moneyTotalText.text = moneyTotal.ToString() + " S";
     }
 
     
