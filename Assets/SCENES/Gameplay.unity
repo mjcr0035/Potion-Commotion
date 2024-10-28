@@ -4441,7 +4441,7 @@ MonoBehaviour:
   moneyGainedText: {fileID: 1621968059}
   moneyTotalText: {fileID: 207728611}
   potionVal: 0
-  waveCountdown: 6
+  waveCountdown: 3
   endText: {fileID: 0}
 --- !u!4 &1914457448
 Transform:
