@@ -11,14 +11,18 @@ public class Pot2D : MonoBehaviour
         { new HashSet<string> { "Ingredient1", "Ingredient2" }, "Potion1" },
         { new HashSet<string> { "Ingredient3", "Ingredient2" }, "Potion2" },
         { new HashSet<string> { "Ingredient1", "Ingredient3" }, "Potion3" },
-         { new HashSet<string> { "Ingredient4", "Ingredient3" }, "Potion4" },
+        { new HashSet<string> { "Ingredient4", "Ingredient3" }, "Potion4" },
+        { new HashSet<string> { "Ingredient2", "Ingredient5" }, "Potion5" },
     };
 
     private HashSet<HashSet<string>> recipeExceptions = new HashSet<HashSet<string>>()
     {
         new HashSet<string> { "Ingredient1", "Ingredient4" },
         new HashSet<string> { "Ingredient2", "Ingredient4" },
-        
+        new HashSet<string> { "Ingredient1", "Ingredient5" },
+        new HashSet<string> { "Ingredient3", "Ingredient5" },
+        new HashSet<string> { "Ingredient4", "Ingredient5" },
+
     };
 
     public Dictionary<string, GameObject> recipePrefabs = new Dictionary<string, GameObject>();
@@ -26,6 +30,7 @@ public class Pot2D : MonoBehaviour
     public GameObject Potion2;
     public GameObject Potion3;
     public GameObject Potion4;
+    public GameObject Potion5;
     public GameObject SwirlingReady;
 
     private bool isRecipeBeingProcessed = false;
@@ -44,6 +49,7 @@ public class Pot2D : MonoBehaviour
         recipePrefabs["Potion2"] = Potion2;
         recipePrefabs["Potion3"] = Potion3;
         recipePrefabs["Potion4"] = Potion4;
+        recipePrefabs["Potion5"] = Potion5;
 
         audioSource = GetComponent<AudioSource>();
     }
