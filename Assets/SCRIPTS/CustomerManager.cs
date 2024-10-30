@@ -51,6 +51,10 @@ public class CustomerManager : MonoBehaviour
     private bool readyToCountDown;
     public GameObject endText;
 
+    
+    //alters behavior if in tutorial mode
+    public bool tutorialMode;
+
 
     private void Start()
     {
@@ -58,7 +62,12 @@ public class CustomerManager : MonoBehaviour
         SuccessUI.SetActive(false);
         moneyGainedText.enabled = false;
 
-        readyToCountDown = true;
+        if(tutorialMode == false)
+        {
+            readyToCountDown = true;
+        }else{
+            TutorialSequence();
+        }
         
     }
 
@@ -168,7 +177,9 @@ public class CustomerManager : MonoBehaviour
                 waveCountdown = Random.Range(2, 4);
             }
 
-            readyToCountDown = true;
+            if(tutorialMode==false){
+                readyToCountDown = true;
+            }
 
             Debug.Log("customer despawning!!!");
             
@@ -227,7 +238,35 @@ public class CustomerManager : MonoBehaviour
         moneyTotalText.text = moneyTotal.ToString() + " S";
     }
 
-    
+    public void TutorialSequence()
+    {
+        //Welcome text
+        //wait for click
+        //Spawn customer
+        //Text prompts taking the customer's order
+        //Wait for order to be taken
+        //Pause satisfaction timer
+        //Texts notes potion order, notes satisfaction timer, prompts switching to backroom
+        //wait for switch
+        //Text prompts to use recipe book
+        //wait for recipe book to open
+        //Text prompts dragging the correct ingredients
+        //wait for 2 ingredients to be in the pot
+        //Text prompts swirling
+        //wait for new potion to spawn
+        //Text prompts dragging to the conveyor belt
+        //wait for potion to collide with conveyor
+        //Text prompts to switch to storefront
+        //wait for switch
+        //Text prompts to drag potion to customer
+        //wait for customer despawn
+        //Text explains satisfaction and corectness relate to score
+        //Wait for click
+        //"You're ready, glhf"
+        //set tutorialMode false
+        //set readyToCountDown true
+
+    }
 
 
 }
