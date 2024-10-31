@@ -31,6 +31,9 @@ public class Pot2D : MonoBehaviour
     public GameObject Potion3;
     public GameObject Potion4;
     public GameObject Potion5;
+    public GameObject Potion6;
+    public GameObject Potion7;
+    public GameObject Potion8;
     public GameObject SwirlingReady;
 
     private bool isRecipeBeingProcessed = false;
@@ -50,6 +53,9 @@ public class Pot2D : MonoBehaviour
         recipePrefabs["Potion3"] = Potion3;
         recipePrefabs["Potion4"] = Potion4;
         recipePrefabs["Potion5"] = Potion5;
+        recipePrefabs["Potion6"] = Potion6;
+        recipePrefabs["Potion7"] = Potion7;
+        recipePrefabs["Potion8"] = Potion8;
 
         audioSource = GetComponent<AudioSource>();
     }
