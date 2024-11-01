@@ -181,7 +181,14 @@ MonoBehaviour:
   requestedPotion: 
   customerManager: {fileID: 0}
   potionImages:
-  - {fileID: 21300000, guid: a7f38cabbddcab3498697c5a1b6c960b, type: 3}
+  - {fileID: 21300000, guid: a8e419715c4353b429429950c29f0ee9, type: 3}
+  - {fileID: 21300000, guid: 1c7df5475bc099244b5f6775ef42bdbc, type: 3}
+  - {fileID: 21300000, guid: 2a61df358faa7074f957fa78106f4e5f, type: 3}
+  - {fileID: 21300000, guid: c4d422ff4dce7db48bf89874d910e964, type: 3}
+  - {fileID: 21300000, guid: 0b12f940eca899843b6b387dc193e2a4, type: 3}
+  - {fileID: 21300000, guid: d8c0b501709ebb5448169aec9404f7c2, type: 3}
+  - {fileID: 21300000, guid: a720b68bce5e7924d804c5abf78434a4, type: 3}
+  - {fileID: 21300000, guid: b3e0c20e394a8a646b370799d1402025, type: 3}
   spriteRenderer: {fileID: 2140520182928165333}
   targetObject: {fileID: 7776309844054668313}
   happinessTimer: {fileID: 0}

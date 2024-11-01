@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: 5267711599838673034}
   - component: {fileID: -8859446456401243095}
   m_Layer: 0
-  m_Name: SpiralPotion
+  m_Name: potion6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

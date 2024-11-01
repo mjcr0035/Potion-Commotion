@@ -9,19 +9,23 @@ public class Pot2D : MonoBehaviour
     private Dictionary<HashSet<string>, string> recipes = new Dictionary<HashSet<string>, string>()
     {
         { new HashSet<string> { "Ingredient1", "Ingredient2" }, "Potion1" },
-        { new HashSet<string> { "Ingredient3", "Ingredient2" }, "Potion2" },
         { new HashSet<string> { "Ingredient1", "Ingredient3" }, "Potion3" },
-        { new HashSet<string> { "Ingredient4", "Ingredient3" }, "Potion4" },
         { new HashSet<string> { "Ingredient2", "Ingredient5" }, "Potion5" },
+        { new HashSet<string> { "Ingredient3", "Ingredient2" }, "Potion2" },
+        { new HashSet<string> { "Ingredient4", "Ingredient3" }, "Potion4" },
+        { new HashSet<string> { "Ingredient4", "Ingredient5" }, "Potion6" },
+        { new HashSet<string> { "Ingredient5", "Ingredient3" }, "Potion7" },
+        { new HashSet<string> { "Ingredient5", "Ingredient1" }, "Potion7" },
+
     };
 
     private HashSet<HashSet<string>> recipeExceptions = new HashSet<HashSet<string>>()
     {
         new HashSet<string> { "Ingredient1", "Ingredient4" },
         new HashSet<string> { "Ingredient2", "Ingredient4" },
-        new HashSet<string> { "Ingredient1", "Ingredient5" },
-        new HashSet<string> { "Ingredient3", "Ingredient5" },
-        new HashSet<string> { "Ingredient4", "Ingredient5" },
+        
+  
+        
 
     };
 

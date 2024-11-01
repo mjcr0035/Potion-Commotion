@@ -183,7 +183,7 @@ GameObject:
   - component: {fileID: 3801684155603828038}
   - component: {fileID: -564047447023504845}
   m_Layer: 0
-  m_Name: HeartPotion
+  m_Name: potion8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
