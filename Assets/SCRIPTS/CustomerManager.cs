@@ -48,12 +48,12 @@ public class CustomerManager : MonoBehaviour
 
     //spawner vars
     [SerializeField] public float waveCountdown;
-    private bool readyToCountDown;
+    public bool readyToCountDown;
     public GameObject endText;
 
     
     //alters behavior if in tutorial mode
-    public bool tutorialMode;
+    //public bool tutorialMode;
 
 
     private void Start()
@@ -62,12 +62,7 @@ public class CustomerManager : MonoBehaviour
         SuccessUI.SetActive(false);
         moneyGainedText.enabled = false;
 
-        if(tutorialMode == false)
-        {
-            readyToCountDown = true;
-        }else{
-            TutorialSequence();
-        }
+        //TutorialSequence();
         
     }
 
@@ -123,10 +118,7 @@ public class CustomerManager : MonoBehaviour
             feedbackUI.SetActive(true);
 
             //starts the timer at a random number every spawn, patience depends on time of day
-            //if lv1,
-            //happinessTimer.StartHappinessTimer(Random.Range(7,10));
-            //if lv2, etc.
-            if (dayCycle.startDay)
+            if (dayCycle.startOfDay)
             {
                 happinessTimer.StartHappinessTimer(Random.Range(20, 25));
             }
@@ -135,7 +127,7 @@ public class CustomerManager : MonoBehaviour
                 happinessTimer.StartHappinessTimer(Random.Range(15, 20));
 
             }
-            else if (dayCycle.endofDay)
+            else if (dayCycle.endOfDay)
             {
                 happinessTimer.StartHappinessTimer(Random.Range(10, 15));
             }
@@ -158,7 +150,7 @@ public class CustomerManager : MonoBehaviour
         {
             happinessTimer.StopHappinessTimer();
 
-            if (dayCycle.startDay)
+            if (dayCycle.startOfDay)
             {
                 waveCountdown = Random.Range(6, 10);
             }
@@ -166,14 +158,12 @@ public class CustomerManager : MonoBehaviour
             {
                 waveCountdown = Random.Range(4, 8);
             }
-            else if (dayCycle.endofDay)
+            else if (dayCycle.endOfDay)
             {
                 waveCountdown = Random.Range(2, 4);
             }
 
-            if(tutorialMode==false){
-                readyToCountDown = true;
-            }
+            readyToCountDown = true;
 
             Debug.Log("customer despawning!!!");
             
@@ -201,7 +191,7 @@ public class CustomerManager : MonoBehaviour
         //animate moneygained trigger eventually
         moneyGainedText.enabled = true;
 
-        potionVal = Random.Range(85, 100);
+        potionVal = Random.Range(60, 100);
                         
         moneyGained = potionVal + (10 * Mathf.RoundToInt(happinessTimer.remainingDuration));
 

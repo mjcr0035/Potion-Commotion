@@ -13,7 +13,8 @@ public class GameManager : MonoBehaviour
     public bool levelTwoSelected;
     public bool levelThreeSelected;
     public bool endlessSelected;
-    public string sceneName;
+    public bool tutorialSelected;
+
     public GameObject levelsObject;
 
     [Header("Gold Collected")]
@@ -35,7 +36,10 @@ public class GameManager : MonoBehaviour
         levelOneSelected = false;
         levelTwoSelected = false;
         levelThreeSelected = false;
+        endlessSelected = false;
+        tutorialSelected = false;
     }
+
     // Update is called once per frame
     void Update()
     {
@@ -51,22 +55,26 @@ public class GameManager : MonoBehaviour
     public void levelOne()
     {
         levelOneSelected = true;
-        SceneManager.LoadScene(sceneName);
+        SceneManager.LoadScene(1);
     }
-
     public void levelTwo()
     {
         levelTwoSelected = true;
-        SceneManager.LoadScene(sceneName);
+        SceneManager.LoadScene(1);
     }
     public void levelThree()
     {
         levelThreeSelected = true;
-        SceneManager.LoadScene(sceneName);
+        SceneManager.LoadScene(1);
     }
     public void endless()
     {
         endlessSelected = true;
-        SceneManager.LoadScene(sceneName);
+        SceneManager.LoadScene(1);
+    }
+    public void tutorial()
+    {
+        tutorialSelected = true;
+        SceneManager.LoadScene(1);
     }
 }
