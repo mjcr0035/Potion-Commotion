@@ -74,13 +74,7 @@ public class CustomerManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //temporary customer spawner until we figure out how we want days to work and stuff
-
-      //if (Input.GetKeyDown(KeyCode.Space))
-      //{
-      //    SpawnCustomer();
-      //}
-
+       
         if (readyToCountDown == true)
         {
             waveCountdown -= Time.deltaTime;

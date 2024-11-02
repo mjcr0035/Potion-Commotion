@@ -7,20 +7,20 @@ public class DragIngredient2D : MonoBehaviour
     private Vector3 originalPosition;
     private bool isDragging = false;
     public bool hasBeenAdded = false;
-    private AudioSource audioSource;
+    
 
     void Start()
     {
         // Store the original position of the ingredient
         originalPosition = transform.position;
-        audioSource = GetComponent<AudioSource>();
+        
     }
 
     void OnMouseDown()
     {
         // Begin dragging
         isDragging = true;
-        audioSource.Play();
+        
     }
 
     void OnMouseDrag()

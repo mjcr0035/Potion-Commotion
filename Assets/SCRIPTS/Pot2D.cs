@@ -9,23 +9,21 @@ public class Pot2D : MonoBehaviour
     private Dictionary<HashSet<string>, string> recipes = new Dictionary<HashSet<string>, string>()
     {
         { new HashSet<string> { "Ingredient1", "Ingredient2" }, "Potion1" },
-        { new HashSet<string> { "Ingredient1", "Ingredient3" }, "Potion3" },
-        { new HashSet<string> { "Ingredient2", "Ingredient5" }, "Potion5" },
-        { new HashSet<string> { "Ingredient3", "Ingredient2" }, "Potion2" },
-        { new HashSet<string> { "Ingredient4", "Ingredient3" }, "Potion4" },
-        { new HashSet<string> { "Ingredient4", "Ingredient5" }, "Potion6" },
-        { new HashSet<string> { "Ingredient5", "Ingredient3" }, "Potion7" },
-        { new HashSet<string> { "Ingredient5", "Ingredient1" }, "Potion7" },
-
+        { new HashSet<string> { "Ingredient1", "Ingredient3" }, "Potion2" },
+        { new HashSet<string> { "Ingredient1", "Ingredient4" }, "Potion3" },
+        { new HashSet<string> { "Ingredient1", "Ingredient5" }, "Potion4" },
+        { new HashSet<string> { "Ingredient2", "Ingredient3" }, "Potion5" },
+        { new HashSet<string> { "Ingredient2", "Ingredient4" }, "Potion6" },
+        { new HashSet<string> { "Ingredient2", "Ingredient5" }, "Potion7" },
+        { new HashSet<string> { "Ingredient3", "Ingredient4" }, "Potion8" },
+        { new HashSet<string> { "Ingredient3", "Ingredient5" }, "Potion9" },
+        { new HashSet<string> { "Ingredient4", "Ingredient5" }, "Potion10" },
     };
 
     private HashSet<HashSet<string>> recipeExceptions = new HashSet<HashSet<string>>()
     {
-        new HashSet<string> { "Ingredient1", "Ingredient4" },
-        new HashSet<string> { "Ingredient2", "Ingredient4" },
-        
-  
-        
+      //new HashSet<string> { "Ingredient1", "Ingredient4" },
+      //new HashSet<string> { "Ingredient2", "Ingredient4" },
 
     };
 
@@ -38,6 +36,9 @@ public class Pot2D : MonoBehaviour
     public GameObject Potion6;
     public GameObject Potion7;
     public GameObject Potion8;
+    public GameObject Potion9;
+    public GameObject Potion10;
+
     public GameObject SwirlingReady;
 
     private bool isRecipeBeingProcessed = false;
@@ -47,8 +48,6 @@ public class Pot2D : MonoBehaviour
     private Vector2 lastMousePosition;
     private bool inFirstQuadrant = false;
 
-    public AudioClip[] soundClips; //array of clips
-    private AudioSource audioSource;
 
     void Start()
     {
@@ -60,8 +59,10 @@ public class Pot2D : MonoBehaviour
         recipePrefabs["Potion6"] = Potion6;
         recipePrefabs["Potion7"] = Potion7;
         recipePrefabs["Potion8"] = Potion8;
+        recipePrefabs["Potion9"] = Potion9;
+        recipePrefabs["Potion10"] = Potion10;
 
-        audioSource = GetComponent<AudioSource>();
+        
     }
 
     void Update()
@@ -78,7 +79,7 @@ public class Pot2D : MonoBehaviour
             if (ingredientScript != null && !ingredientScript.hasBeenAdded)
             {
                 Debug.Log("Ingredient " + other.gameObject.name + " added to the pot!");
-                PlaySound(0);
+                
 
                 ingredientScript.hasBeenAdded = true;
                 addedIngredients.Add(other.gameObject.name);
@@ -159,7 +160,7 @@ public class Pot2D : MonoBehaviour
         if (recipePrefabs.ContainsKey(newItem))
         {
             Instantiate(recipePrefabs[newItem], transform.position, Quaternion.identity);
-            PlaySound(1);
+            
         }
         else
         {
@@ -261,10 +262,7 @@ public class Pot2D : MonoBehaviour
         swirlCount = 0;
     }
 
-    public void PlaySound(int clipIndex){ //plays given sound
-        if (clipIndex >= 0 && clipIndex < soundClips.Length){
-            audioSource.PlayOneShot(soundClips[clipIndex]);
-        }
-    }
+    
+    
 }
 

@@ -7,7 +7,10 @@ public class RegisterSwap : MonoBehaviour
 {
     public GameObject registerButton;
     public GameObject backroomButton;
-    
+
+    public GameObject recipeButton;
+    public GameObject recipeBook;
+
     public Transform registerTransform;
     public Transform backroomTransform;
     
@@ -28,7 +31,8 @@ public class RegisterSwap : MonoBehaviour
         registerButton.gameObject.SetActive(false);
         backroomButton.gameObject.SetActive(true);
 
-        
+        recipeButton.gameObject.SetActive(false);
+        recipeBook.gameObject.SetActive(false);
 
     }
 
@@ -58,8 +62,9 @@ public class RegisterSwap : MonoBehaviour
         SwitchingToBackroom = false;
 
         //gameplayCamera.transform.position = Vector3.Lerp(gameplayCamera.transform.position, registerTransform.position, lerpSpeed * Time.deltaTime);
+        recipeButton.gameObject.SetActive(false);
+        recipeBook.gameObject.SetActive(false);
 
-        
         Debug.Log("screen changed to register");
     }
 
@@ -74,8 +79,9 @@ public class RegisterSwap : MonoBehaviour
         SwitchingToRegister = false;
 
         //gameplayCamera.transform.position = Vector3.Lerp(gameplayCamera.transform.position, backroomTransform.position, lerpSpeed * Time.deltaTime);
+        recipeButton.gameObject.SetActive(true);
+        recipeBook.gameObject.SetActive(false);
 
-       
         Debug.Log("screen changed to backroom");
     }
 

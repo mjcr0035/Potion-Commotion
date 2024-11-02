@@ -153,7 +153,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.06612623, y: 0.00994271}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -164,7 +164,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.7264059, y: 3.4595547}
+  m_Size: {x: 4, y: 5}
   m_EdgeRadius: 0
 --- !u!114 &284401931744761348
 MonoBehaviour:
@@ -189,6 +189,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: d8c0b501709ebb5448169aec9404f7c2, type: 3}
   - {fileID: 21300000, guid: a720b68bce5e7924d804c5abf78434a4, type: 3}
   - {fileID: 21300000, guid: b3e0c20e394a8a646b370799d1402025, type: 3}
+  - {fileID: 21300000, guid: a7f38cabbddcab3498697c5a1b6c960b, type: 3}
+  - {fileID: 21300000, guid: e1aa2d6775e6c764494d3d706f35a1d2, type: 3}
   spriteRenderer: {fileID: 2140520182928165333}
   targetObject: {fileID: 7776309844054668313}
   happinessTimer: {fileID: 0}

@@ -189,6 +189,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: d8c0b501709ebb5448169aec9404f7c2, type: 3}
   - {fileID: 21300000, guid: a720b68bce5e7924d804c5abf78434a4, type: 3}
   - {fileID: 21300000, guid: b3e0c20e394a8a646b370799d1402025, type: 3}
+  - {fileID: 21300000, guid: a7f38cabbddcab3498697c5a1b6c960b, type: 3}
+  - {fileID: 21300000, guid: e1aa2d6775e6c764494d3d706f35a1d2, type: 3}
   spriteRenderer: {fileID: 2140520182928165333}
   targetObject: {fileID: 7776309844054668313}
   happinessTimer: {fileID: 0}
