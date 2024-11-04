@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class DayCycle : MonoBehaviour
 {
     //matthew - this script handles the passage of time in both endless in story. bools are checked to raise intensity
-    //the longer the day goes. when the day is 'over' the game returns to the main menu screen
+    //the longer the day goes. when the day is 'over' the game displays the end UI and returns to the main menu screen
     
     public bool startOfDay = false;
     public bool midDay = false;
@@ -24,7 +24,7 @@ public class DayCycle : MonoBehaviour
     public CustomerManager customerManager;
 
 
-    public GameObject levelStartUI;
+    public GameObject[] levelStartUI;
     public GameObject levelEndUI;
 
     // Start is called before the first frame update
@@ -32,6 +32,9 @@ public class DayCycle : MonoBehaviour
     {
         gameManager = FindObjectOfType<GameManager>();
         dayActive = false;
+
+        ShowLevelUI();
+
     }
 
     // Update is called once per frame
@@ -55,28 +58,22 @@ public class DayCycle : MonoBehaviour
 
         }
 
-
-      if (intensityTimer < 60) //start of day (calm)
-      {
-          startOfDay = true;
-          
-          //update UI
-      
-      } else if (intensityTimer < 120) //midday (rush)
-      {
-          startOfDay = false;
-          midDay = true;
-          
-          //update UI
-      }
-      else if (intensityTimer < 180) //end of day (intense)
-      {
-          startOfDay = false;
-          midDay = false;
-          endOfDay = true;
-          
-          //update UI
+        if (intensityTimer >= 0 && intensityTimer <= 60) //level 1 / start of day (calm)
+        {
+            IntensityState(true, false, false);
+            
         }
+        if (intensityTimer >= 61 && intensityTimer <= 120) //level 2 / midday (rush)
+        {
+            IntensityState(false, true, false);
+            
+        }
+        if (intensityTimer >= 121 && intensityTimer <= 180) //level3 / end of day (intense)
+        {
+            IntensityState(false, false, true);
+            
+        }
+
     }
 
     //updates countdown timer and ui 
@@ -91,6 +88,29 @@ public class DayCycle : MonoBehaviour
 
     }
 
+    //updates intensity day variables and displays respective ui
+    public void IntensityState (bool startofday, bool midday, bool endofday)
+    {
+        startOfDay = startofday;
+        midDay = midday;
+        endOfDay = endofday;
+
+        //displays day cycle clock UI anim at each point
+
+        if (startOfDay)
+        {
+            
+        }
+        else if (midDay)
+        {
+            
+        }
+        else if (endOfDay)
+        {
+            
+        }
+    }
+
     //stops timers and displays the level over UI
     public void DayOver()
     {
@@ -100,10 +120,28 @@ public class DayCycle : MonoBehaviour
 
     }
 
+    public void ShowLevelUI()
+    {
+        if (gameManager.levelOneSelected)
+        {
+            levelStartUI[0].SetActive(true);
+        }
+        else if (gameManager.levelTwoSelected)
+        {
+            levelStartUI[1].SetActive(true);
+        }
+        else if (gameManager.levelThreeSelected)
+        {
+            levelStartUI[2].SetActive(true);
+        }
+        else if (gameManager.endlessSelected)
+        {
+            levelStartUI[3].SetActive(true);
+        }
+    }
     //hides level start quota and starts day cycle timer based on the level selected
     public void LevelStart()
     {
-        levelStartUI.SetActive(false);
         customerManager.readyToCountDown = true;
         dayActive = true;
 
