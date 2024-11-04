@@ -24,11 +24,17 @@ public class GameManager : MonoBehaviour
     public int levelThreeGold;
     public int endlessGold;
 
+    private static GameObject sampleInstance;
+
 
     private void Awake()
     {
+        if (sampleInstance != null)
+        {
+            Destroy(sampleInstance);
+        }
+        sampleInstance = gameObject;
         DontDestroyOnLoad(gameObject);
-        
     }
 
     private void Start()
@@ -55,26 +61,55 @@ public class GameManager : MonoBehaviour
     public void levelOne()
     {
         levelOneSelected = true;
+        levelTwoSelected = false;
+        levelThreeSelected = false;
+        endlessSelected = false;
+        tutorialSelected = false;
         SceneManager.LoadScene(1);
     }
     public void levelTwo()
     {
+        levelOneSelected = false;
         levelTwoSelected = true;
+        levelThreeSelected = false;
+        endlessSelected = false;
+        tutorialSelected = false;
         SceneManager.LoadScene(1);
     }
     public void levelThree()
     {
+        levelOneSelected = false;
+        levelTwoSelected = false;
         levelThreeSelected = true;
+        endlessSelected = false;
+        tutorialSelected = false;
         SceneManager.LoadScene(1);
     }
     public void endless()
     {
+        levelOneSelected = false;
+        levelTwoSelected = false;
+        levelThreeSelected = false;
         endlessSelected = true;
+        tutorialSelected = false;
         SceneManager.LoadScene(1);
     }
     public void tutorial()
     {
+        levelOneSelected = false;
+        levelTwoSelected = false;
+        levelThreeSelected = false;
+        endlessSelected = false;
         tutorialSelected = true;
         SceneManager.LoadScene(1);
+    }
+    public void mainMenu()
+    {
+        levelOneSelected = false;
+        levelTwoSelected = false;
+        levelThreeSelected = false;
+        endlessSelected = false;
+        tutorialSelected = false;
+        SceneManager.LoadScene(0);
     }
 }

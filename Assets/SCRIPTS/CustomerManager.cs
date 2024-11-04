@@ -51,9 +51,7 @@ public class CustomerManager : MonoBehaviour
     public bool readyToCountDown;
     public GameObject endText;
 
-    
-    //alters behavior if in tutorial mode
-    //public bool tutorialMode;
+    public GameObject TUTORIAL4;
 
 
     private void Start()
@@ -62,7 +60,7 @@ public class CustomerManager : MonoBehaviour
         SuccessUI.SetActive(false);
         moneyGainedText.enabled = false;
 
-        //TutorialSequence();
+        gameManager = FindObjectOfType<GameManager>();
         
     }
 
@@ -118,16 +116,16 @@ public class CustomerManager : MonoBehaviour
             feedbackUI.SetActive(true);
 
             //starts the timer at a random number every spawn, patience depends on time of day
-            if (dayCycle.startOfDay)
+            if (dayCycle.startOfDay && !gameManager.tutorialSelected)
             {
                 happinessTimer.StartHappinessTimer(Random.Range(20, 25));
             }
-            else if (dayCycle.midDay)
+            else if (dayCycle.midDay && !gameManager.tutorialSelected)
             {
                 happinessTimer.StartHappinessTimer(Random.Range(15, 20));
 
             }
-            else if (dayCycle.endOfDay)
+            else if (dayCycle.endOfDay && !gameManager.tutorialSelected)
             {
                 happinessTimer.StartHappinessTimer(Random.Range(10, 15));
             }
@@ -175,6 +173,11 @@ public class CustomerManager : MonoBehaviour
 
             feedbackUI.SetActive(false);
             moneyGainedText.enabled = false;
+
+            if (gameManager.tutorialSelected)
+            {
+                TUTORIAL4.gameObject.SetActive(true);
+            }
         }
                
     }
@@ -220,36 +223,6 @@ public class CustomerManager : MonoBehaviour
 
         moneyGainedText.text = "+ " + moneyGained.ToString() + " SOL";
         moneyTotalText.text = moneyTotal.ToString() + " S";
-    }
-
-    public void TutorialSequence()
-    {
-        //Welcome text
-        //wait for click
-        //Spawn customer
-        //Text prompts taking the customer's order
-        //Wait for order to be taken
-        //Pause satisfaction timer
-        //Texts notes potion order, notes satisfaction timer, prompts switching to backroom
-        //wait for switch
-        //Text prompts to use recipe book
-        //wait for recipe book to open
-        //Text prompts dragging the correct ingredients
-        //wait for 2 ingredients to be in the pot
-        //Text prompts swirling
-        //wait for new potion to spawn
-        //Text prompts dragging to the conveyor belt
-        //wait for potion to collide with conveyor
-        //Text prompts to switch to storefront
-        //wait for switch
-        //Text prompts to drag potion to customer
-        //wait for customer despawn
-        //Text explains satisfaction and corectness relate to score
-        //Wait for click
-        //"You're ready, glhf"
-        //set tutorialMode false
-        //set readyToCountDown true
-
     }
 
 

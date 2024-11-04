@@ -48,6 +48,10 @@ public class Pot2D : MonoBehaviour
     private Vector2 lastMousePosition;
     private bool inFirstQuadrant = false;
 
+    public GameManager gameManager;
+
+    public GameObject TUTORIAL3;
+
 
     void Start()
     {
@@ -62,7 +66,7 @@ public class Pot2D : MonoBehaviour
         recipePrefabs["Potion9"] = Potion9;
         recipePrefabs["Potion10"] = Potion10;
 
-        
+        gameManager = FindObjectOfType<GameManager>();
     }
 
     void Update()
@@ -160,6 +164,11 @@ public class Pot2D : MonoBehaviour
         if (recipePrefabs.ContainsKey(newItem))
         {
             Instantiate(recipePrefabs[newItem], transform.position, Quaternion.identity);
+
+            if (gameManager.tutorialSelected)
+            {
+                TUTORIAL3.gameObject.SetActive(true);
+            }
             
         }
         else
