@@ -27,6 +27,8 @@ public class HappinessTimer : MonoBehaviour
 
     public bool timerActive = false;
 
+    //audioclips
+    public AudioClip timerEndingSound;
 
     public void StartHappinessTimer(float duration)
     {
@@ -53,6 +55,12 @@ public class HappinessTimer : MonoBehaviour
             yield return new WaitForSeconds(1f);
             
             yield return null;
+
+            if (remainingDuration == 4)
+            {
+                AudioManager.Instance.PlaySoundFXClip(timerEndingSound, transform, 0.7f, 1f, "TimerSFX");
+            }
+
         }
 
         //waits for a few seconds after the timer is depleted before actually leaving

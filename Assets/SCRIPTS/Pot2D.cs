@@ -39,6 +39,10 @@ public class Pot2D : MonoBehaviour
     public GameObject Potion9;
     public GameObject Potion10;
 
+    //audioclips
+    public AudioClip[] ingredientDropSounds;
+    public AudioClip[] potionMadeSound;
+
     public GameObject SwirlingReady;
 
     private bool isRecipeBeingProcessed = false;
@@ -83,7 +87,9 @@ public class Pot2D : MonoBehaviour
             if (ingredientScript != null && !ingredientScript.hasBeenAdded)
             {
                 Debug.Log("Ingredient " + other.gameObject.name + " added to the pot!");
-                
+
+
+                AudioManager.Instance.PlayRandomSoundFXClip(ingredientDropSounds, transform, 0.6f, Random.Range(1f, 1.4f));
 
                 ingredientScript.hasBeenAdded = true;
                 addedIngredients.Add(other.gameObject.name);
@@ -164,6 +170,8 @@ public class Pot2D : MonoBehaviour
         if (recipePrefabs.ContainsKey(newItem))
         {
             Instantiate(recipePrefabs[newItem], transform.position, Quaternion.identity);
+
+            AudioManager.Instance.PlayRandomSoundFXClip(potionMadeSound, transform, 0.6f, Random.Range(0.9f, 1.1f));
 
             if (gameManager.tutorialSelected)
             {

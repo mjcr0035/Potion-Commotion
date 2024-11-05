@@ -27,9 +27,6 @@ public class CustomerManager : MonoBehaviour
     public GameObject feedbackUI;
     public GameObject SuccessUI;
     public GameObject FailureUI;
-    
-
-    public GameObject newCustomer;
 
     //happiness vars
     public int customerHappiness;
@@ -37,6 +34,12 @@ public class CustomerManager : MonoBehaviour
 
     public GameManager gameManager;
     public DayCycle dayCycle;
+
+    //audio
+    public AudioClip customerEnterSound;
+    public AudioClip solGainedSound;
+    public AudioClip orderCorrectSound;
+    public AudioClip orderIncorrectSound;
 
     //money vars
     public int moneyGained;
@@ -49,6 +52,8 @@ public class CustomerManager : MonoBehaviour
     //spawner vars
     [SerializeField] public float waveCountdown;
     public bool readyToCountDown;
+    public GameObject newCustomer;
+
     public GameObject endText;
 
     public GameObject TUTORIAL4;
@@ -104,7 +109,7 @@ public class CustomerManager : MonoBehaviour
             int customerSpawnIndex = Random.Range(0, customerPrefabs.Length);
             Instantiate(customerPrefabs[customerSpawnIndex], registerParent.transform);
 
-            
+            AudioManager.Instance.PlaySoundFXClip(customerEnterSound, transform, 0.6f, 1f, "CustomerEnterSFX");
 
             newCustomer = GameObject.FindWithTag("Customer");
 
@@ -199,7 +204,11 @@ public class CustomerManager : MonoBehaviour
         moneyGained = potionVal + (10 * Mathf.RoundToInt(happinessTimer.remainingDuration));
 
         Debug.Log("order correct, customer left this much gold:" + moneyGained + " you had this many seconds left: " + happinessTimer.remainingDuration);
-        
+
+        //ordercorrect sound here
+        AudioManager.Instance.PlaySoundFXClip(orderCorrectSound, transform, 0.5f, Random.Range(0.9f, 1.3f), "OrderCorrectSFX");
+        AudioManager.Instance.PlaySoundFXClip(solGainedSound, transform, 0.7f, Random.Range(0.9f, 1.3f), "SolGainedSFX");
+
         moneyTotal += moneyGained;
 
         moneyGainedText.text = "+ " + moneyGained.ToString() + " SOL";
@@ -218,7 +227,11 @@ public class CustomerManager : MonoBehaviour
         moneyGained = potionVal + (2 * Mathf.RoundToInt(happinessTimer.remainingDuration));
 
         Debug.Log("order incorrect, customer left this much gold:" + moneyGained + " you had this many seconds left: " + happinessTimer.remainingDuration);
-        
+
+        //orderincorrect sound here
+        AudioManager.Instance.PlaySoundFXClip(orderIncorrectSound, transform, 0.5f, Random.Range(0.9f, 1.3f), "OrderInorrectSFX");
+        AudioManager.Instance.PlaySoundFXClip(solGainedSound, transform, 0.7f, Random.Range(0.9f, 1.3f), "SolGainedSFX");
+
         moneyTotal += moneyGained;
 
         moneyGainedText.text = "+ " + moneyGained.ToString() + " SOL";

@@ -9,7 +9,11 @@ public class DraggableObject : MonoBehaviour
     public float moveDistance = 100.0f;  // Distance to move to the left
     public float movementSpeed = 2.0f; // Speed at which the object will move
 
-    
+    //audioclips
+    public AudioClip[] potionPickupSounds;
+    public AudioClip[] potionDropSounds;
+    public AudioClip conveyorSound;
+
 
     void Start()
     {
@@ -22,7 +26,8 @@ public class DraggableObject : MonoBehaviour
         offset = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
         offset.z = 0;
         isDragging = true;
-        
+
+        AudioManager.Instance.PlayRandomSoundFXClip(potionPickupSounds, transform, 0.6f, Random.Range(1f, 1.2f));
     }
 
     // Called when the mouse is dragging the object
@@ -37,6 +42,7 @@ public class DraggableObject : MonoBehaviour
     private void OnMouseUp()
     {
         isDragging = false;
+        AudioManager.Instance.PlayRandomSoundFXClip(potionDropSounds, transform, 0.6f, Random.Range(1f, 1.2f));
     }
 
     // Called continuously while the object is inside another collider marked as "Is Trigger"
@@ -45,6 +51,12 @@ public class DraggableObject : MonoBehaviour
         // Check if the object is not being dragged and it's inside the collider with the specified tag
         if (!isDragging && other.CompareTag("Conveyor"))
         {
+            //ensures audioclip will only play once while dragging (hopefully)
+            if (!GameObject.Find("ConveyorSFX"))
+            {
+                AudioManager.Instance.PlaySoundFXClip(conveyorSound, transform, 0.6f, 1f, "ConveyorSFX");
+            }
+            
             // Move the object to the left smoothly over time
             transform.position = new Vector2(transform.position.x - moveDistance * Time.deltaTime * movementSpeed, transform.position.y);
         }

@@ -121,6 +121,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveDistance: 1
   movementSpeed: 2
+  potionPickupSounds:
+  - {fileID: 8300000, guid: f03964e4e4ae5f14a994aec93081e8fa, type: 3}
+  - {fileID: 8300000, guid: 21bc5ffb66345b042a116fb2a2aeba0f, type: 3}
+  potionDropSounds:
+  - {fileID: 8300000, guid: 1884f34d9ca98284194420bcfa8d9f2f, type: 3}
+  - {fileID: 8300000, guid: 08bba4e71960c8b4b8128a358f36a544, type: 3}
+  conveyorSound: {fileID: 8300000, guid: 87a4129d52b2f8d49aba8c39bd4b6a18, type: 3}
 --- !u!212 &1187325065288055315
 SpriteRenderer:
   m_ObjectHideFlags: 0

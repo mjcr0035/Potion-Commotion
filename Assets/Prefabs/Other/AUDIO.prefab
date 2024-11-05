@@ -170,11 +170,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 949af86321643da40bbaf5ab634f5bb9, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -302,6 +302,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   soundFXObject: {fileID: 2787873985561872939}
   musicObject: {fileID: 1246285333737111021}
+  menuSounds:
+  - {fileID: 8300000, guid: 2b6f6aca0acb0a84e9ebb8eee41fdc0d, type: 3}
+  - {fileID: 8300000, guid: 7a4d00963c10aa14fb30995e596651d7, type: 3}
+  - {fileID: 8300000, guid: c65fd2b6f8ca023418c2ed12b9f332a3, type: 3}
+  pageSounds:
+  - {fileID: 8300000, guid: 6d86e3271f04c4d4fa21fbca1d95f6ad, type: 3}
+  - {fileID: 8300000, guid: 1dc8059e27c5d414d98e79fef686a12f, type: 3}
+  swapSounds:
+  - {fileID: 8300000, guid: 6f7151ed4fdc0b4469efec4e87ad0545, type: 3}
 --- !u!1 &6663343226937497468
 GameObject:
   m_ObjectHideFlags: 0

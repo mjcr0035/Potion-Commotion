@@ -7,7 +7,9 @@ public class DragIngredient2D : MonoBehaviour
     private Vector3 originalPosition;
     private bool isDragging = false;
     public bool hasBeenAdded = false;
-    
+
+    //audioclips
+    public AudioClip[] ingredientDragSounds;
 
     void Start()
     {
@@ -20,7 +22,8 @@ public class DragIngredient2D : MonoBehaviour
     {
         // Begin dragging
         isDragging = true;
-        
+        AudioManager.Instance.PlayRandomSoundFXClip(ingredientDragSounds, transform, 0.6f, Random.Range(0.9f, 1.3f));
+
     }
 
     void OnMouseDrag()

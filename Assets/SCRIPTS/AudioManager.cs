@@ -12,6 +12,12 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioSource soundFXObject;
     [SerializeField] public AudioSource musicObject;
 
+    public AudioClip[] menuSounds;
+    public AudioClip[] pageSounds;
+    public AudioClip[] swapSounds;
+
+    public AudioClip[] musicTracks;
+
     private void Awake()
     {
         if (Instance == null)
@@ -20,13 +26,14 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    public void PlaySoundFXClip(AudioClip audioClip, Transform spawnTransform, float volume, float pitch)
+    public void PlaySoundFXClip(AudioClip audioClip, Transform spawnTransform, float volume, float pitch, string name)
     {
         AudioSource audioSource = Instantiate(soundFXObject, spawnTransform.position, Quaternion.identity);
 
         audioSource.clip = audioClip;
         audioSource.volume = volume;
         audioSource.pitch = pitch;
+        audioSource.name = name;
         audioSource.Play();
         float clipLength = audioSource.clip.length;
         Destroy(audioSource.gameObject, clipLength);
@@ -34,7 +41,7 @@ public class AudioManager : MonoBehaviour
 
     }
 
-    public void PlayRandomSoundFXClip(AudioClip[] audioClip, Transform spawnTransform, float volume)
+    public void PlayRandomSoundFXClip(AudioClip[] audioClip, Transform spawnTransform, float volume, float pitch)
     {
         int rand = Random.Range(0, audioClip.Length);
 
@@ -42,6 +49,7 @@ public class AudioManager : MonoBehaviour
 
         audioSource.clip = audioClip[rand];
         audioSource.volume = volume;
+        audioSource.pitch = pitch;
         audioSource.Play();
         float clipLength = audioSource.clip.length;
         Destroy(audioSource.gameObject, clipLength);
@@ -55,6 +63,27 @@ public class AudioManager : MonoBehaviour
         audioSource.volume = volume;
         audioSource.Play();
 
+    }
+
+    public void DynMusicSwap(AudioClip newMusicClip, Transform spawnTransform, float volume, float transitionTime, int track)
+    {
+        
+
+        //musicTracks[track] = newMusicClip;
+
+    }
+
+    public void UISound()
+    {
+        PlayRandomSoundFXClip(menuSounds, transform, 0.6f, Random.Range(1f, 1.4f));
+    }
+    public void PageTurn()
+    {
+        PlayRandomSoundFXClip(pageSounds, transform, 0.6f, Random.Range(1f, 1.4f));
+    }
+    public void ScreenSwap()
+    {
+        PlayRandomSoundFXClip(swapSounds, transform, 0.6f, Random.Range(1f, 1.4f));
     }
 
 }

@@ -385,7 +385,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1851447371}
+      - m_Target: {fileID: 300279765}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: UISound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 671571675}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
@@ -395,7 +407,7 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
       - m_Target: {fileID: 671571675}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
@@ -530,9 +542,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 330465028}
-        m_TargetAssemblyTypeName: DayCycle, Assembly-CSharp
-        m_MethodName: LevelStart
+      - m_Target: {fileID: 300279765}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: UISound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -546,6 +558,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 330465028}
+        m_TargetAssemblyTypeName: DayCycle, Assembly-CSharp
+        m_MethodName: LevelStart
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -715,6 +739,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasBeenAdded: 0
+  ingredientDragSounds:
+  - {fileID: 8300000, guid: 91ac41f97a1155b4c8ae00b9d29a3bab, type: 3}
 --- !u!50 &88083081
 Rigidbody2D:
   serializedVersion: 4
@@ -2013,10 +2039,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1784002783}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 300279765}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: UISound
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2332,9 +2358,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 330465028}
-        m_TargetAssemblyTypeName: DayCycle, Assembly-CSharp
-        m_MethodName: LevelStart
+      - m_Target: {fileID: 300279765}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: UISound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2348,6 +2374,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 330465028}
+        m_TargetAssemblyTypeName: DayCycle, Assembly-CSharp
+        m_MethodName: LevelStart
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2561,9 +2599,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 330465028}
-        m_TargetAssemblyTypeName: DayCycle, Assembly-CSharp
-        m_MethodName: LevelStart
+      - m_Target: {fileID: 300279765}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: UISound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2577,6 +2615,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 330465028}
+        m_TargetAssemblyTypeName: DayCycle, Assembly-CSharp
+        m_MethodName: LevelStart
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2706,10 +2756,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 433753621}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 300279765}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: UISound
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2768,6 +2818,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 277053852}
   m_CullTransparentMesh: 1
+--- !u!114 &300279765 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8947442464590703222, guid: 2f32029c51a6cb944bf9532d1ca9e53f, type: 3}
+  m_PrefabInstance: {fileID: 2396368661992686158}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10ae2054a98c92240bad3cb65886717f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &300550890
 GameObject:
   m_ObjectHideFlags: 0
@@ -2898,6 +2959,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 300279765}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: PageTurn
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3302,10 +3375,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2054804261}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 300279765}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: UISound
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -4690,6 +4763,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 300279765}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: ScreenSwap
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &451172746
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5576,6 +5661,12 @@ MonoBehaviour:
   Potion8: {fileID: 9192748359394496564, guid: 9d25ca714e85347418f6cc2af9becb8b, type: 3}
   Potion9: {fileID: 7539279978496529159, guid: 03f87abc93b088b40ac89303cf3d8c0c, type: 3}
   Potion10: {fileID: 7539279978496529159, guid: 6d96890ea8de6314f9e69151c7a1f432, type: 3}
+  ingredientDropSounds:
+  - {fileID: 8300000, guid: 446515f9852d85342a0887b7751dfb2d, type: 3}
+  - {fileID: 8300000, guid: 440fc6b019688474fb1a303b373aa7fe, type: 3}
+  - {fileID: 8300000, guid: 6211e679368ed0d4796f9f27b47d2f7c, type: 3}
+  potionMadeSound:
+  - {fileID: 8300000, guid: d290247384f64664bbae0d60f77764c6, type: 3}
   SwirlingReady: {fileID: 1857790706}
   gameManager: {fileID: 0}
   TUTORIAL3: {fileID: 1784002783}
@@ -6722,9 +6813,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 330465028}
-        m_TargetAssemblyTypeName: DayCycle, Assembly-CSharp
-        m_MethodName: LevelStart
+      - m_Target: {fileID: 300279765}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: UISound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6738,6 +6829,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 330465028}
+        m_TargetAssemblyTypeName: DayCycle, Assembly-CSharp
+        m_MethodName: LevelStart
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -6967,6 +7070,18 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 300279765}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: PageTurn
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -11127,6 +11242,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1756829515}
         m_TargetAssemblyTypeName: RegisterSwap, Assembly-CSharp
         m_MethodName: registerChange
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 300279765}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: ScreenSwap
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -16456,6 +16583,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 300279765}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: UISound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &1247993007
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17231,6 +17370,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasBeenAdded: 0
+  ingredientDragSounds:
+  - {fileID: 8300000, guid: 91ac41f97a1155b4c8ae00b9d29a3bab, type: 3}
 --- !u!50 &1376966282
 Rigidbody2D:
   serializedVersion: 4
@@ -18248,10 +18389,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 979895363}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 300279765}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: UISound
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -19488,6 +19629,7 @@ MonoBehaviour:
   duration: 20
   remainingDuration: 0
   timerActive: 0
+  timerEndingSound: {fileID: 8300000, guid: fa00d7b4576427547b4612c23ad38759, type: 3}
 --- !u!1 &1694068684
 GameObject:
   m_ObjectHideFlags: 0
@@ -21211,11 +21353,14 @@ MonoBehaviour:
   feedbackUI: {fileID: 956748483}
   SuccessUI: {fileID: 71684420}
   FailureUI: {fileID: 2022295109}
-  newCustomer: {fileID: 0}
   customerHappiness: 15
   happinessTimer: {fileID: 1666720745}
   gameManager: {fileID: 0}
   dayCycle: {fileID: 330465028}
+  customerEnterSound: {fileID: 8300000, guid: 01219f553063c8242a4da6b029e7ecab, type: 3}
+  solGainedSound: {fileID: 8300000, guid: d35f232365b65db4e90a199f0dcc9e9a, type: 3}
+  orderCorrectSound: {fileID: 8300000, guid: ce5f56e71bc53dc40bb005503344dc00, type: 3}
+  orderIncorrectSound: {fileID: 8300000, guid: c860fd678a4038f4d9a0060686e089ef, type: 3}
   moneyGained: 0
   moneyTotal: 0
   moneyGainedText: {fileID: 1621968059}
@@ -21223,6 +21368,7 @@ MonoBehaviour:
   potionVal: 0
   waveCountdown: 3
   readyToCountDown: 0
+  newCustomer: {fileID: 0}
   endText: {fileID: 0}
   TUTORIAL4: {fileID: 2054804261}
 --- !u!4 &1914457448
@@ -21407,6 +21553,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasBeenAdded: 0
+  ingredientDragSounds:
+  - {fileID: 8300000, guid: 91ac41f97a1155b4c8ae00b9d29a3bab, type: 3}
 --- !u!50 &1919020865
 Rigidbody2D:
   serializedVersion: 4
@@ -23046,6 +23194,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasBeenAdded: 0
+  ingredientDragSounds:
+  - {fileID: 8300000, guid: 91ac41f97a1155b4c8ae00b9d29a3bab, type: 3}
 --- !u!50 &2122288774
 Rigidbody2D:
   serializedVersion: 4
@@ -23436,6 +23586,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hasBeenAdded: 0
+  ingredientDragSounds:
+  - {fileID: 8300000, guid: 91ac41f97a1155b4c8ae00b9d29a3bab, type: 3}
 --- !u!50 &2130211580
 Rigidbody2D:
   serializedVersion: 4
@@ -23652,6 +23804,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1246285333737111021, guid: 2f32029c51a6cb944bf9532d1ca9e53f, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 5158226765187573991, guid: 2f32029c51a6cb944bf9532d1ca9e53f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 11.968806
@@ -23696,6 +23852,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: AUDIO
       objectReference: {fileID: 0}
+    - target: {fileID: 8947442464590703222, guid: 2f32029c51a6cb944bf9532d1ca9e53f, type: 3}
+      propertyPath: swapSounds.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8947442464590703222, guid: 2f32029c51a6cb944bf9532d1ca9e53f, type: 3}
+      propertyPath: swapSounds.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 6f7151ed4fdc0b4469efec4e87ad0545, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
