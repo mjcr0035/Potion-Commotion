@@ -3803,7 +3803,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 1000 SOL
+  m_text: 250 SOL
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2a9076049b4e2e946a405285ea9b38f1, type: 2}
   m_sharedMaterial: {fileID: -4914913565782788009, guid: 2a9076049b4e2e946a405285ea9b38f1, type: 2}
@@ -7443,7 +7443,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 1500 SOL
+  m_text: 750 SOL
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2a9076049b4e2e946a405285ea9b38f1, type: 2}
   m_sharedMaterial: {fileID: -4914913565782788009, guid: 2a9076049b4e2e946a405285ea9b38f1, type: 2}
@@ -20383,7 +20383,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 2500 SOL
+  m_text: 1000 SOL
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2a9076049b4e2e946a405285ea9b38f1, type: 2}
   m_sharedMaterial: {fileID: -4914913565782788009, guid: 2a9076049b4e2e946a405285ea9b38f1, type: 2}
@@ -21321,7 +21321,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 1000 SOL
+  m_text: ---- SOL
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2a9076049b4e2e946a405285ea9b38f1, type: 2}
   m_sharedMaterial: {fileID: -4914913565782788009, guid: 2a9076049b4e2e946a405285ea9b38f1, type: 2}
@@ -24212,9 +24212,13 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1246285333737111021, guid: 2f32029c51a6cb944bf9532d1ca9e53f, type: 3}
+      propertyPath: m_Volume
+      value: 0.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 1246285333737111021, guid: 2f32029c51a6cb944bf9532d1ca9e53f, type: 3}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 8300000, guid: 63b4319b86f9c67498149c4b1af899fa, type: 3}
     - target: {fileID: 5158226765187573991, guid: 2f32029c51a6cb944bf9532d1ca9e53f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 11.968806
