@@ -14,6 +14,8 @@ public class DraggableObject : MonoBehaviour
     public AudioClip[] potionDropSounds;
     public AudioClip conveyorSound;
 
+    
+
 
     void Start()
     {
@@ -59,6 +61,8 @@ public class DraggableObject : MonoBehaviour
             
             // Move the object to the left smoothly over time
             transform.position = new Vector2(transform.position.x - moveDistance * Time.deltaTime * movementSpeed, transform.position.y);
+
+          
         }
     }
 

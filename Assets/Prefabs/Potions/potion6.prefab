@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 10, y: 10, z: 1}
+  m_LocalScale: {x: 8, y: 8, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -128,6 +128,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 1884f34d9ca98284194420bcfa8d9f2f, type: 3}
   - {fileID: 8300000, guid: 08bba4e71960c8b4b8128a358f36a544, type: 3}
   conveyorSound: {fileID: 8300000, guid: 87a4129d52b2f8d49aba8c39bd4b6a18, type: 3}
+  ARROW: {fileID: 1431719004580574583, guid: 2244b4b22587d6947be13daab3c3f06f, type: 3}
 --- !u!212 &1621197981671224467
 SpriteRenderer:
   m_ObjectHideFlags: 0
