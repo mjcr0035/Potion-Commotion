@@ -67,7 +67,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.0015687197, y: 0.012549818}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -78,7 +78,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.48431274, y: 0.5156872}
   m_EdgeRadius: 0
 --- !u!50 &6483995662680140613
 Rigidbody2D:
@@ -128,7 +128,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 1884f34d9ca98284194420bcfa8d9f2f, type: 3}
   - {fileID: 8300000, guid: 08bba4e71960c8b4b8128a358f36a544, type: 3}
   conveyorSound: {fileID: 8300000, guid: 87a4129d52b2f8d49aba8c39bd4b6a18, type: 3}
-  ARROW: {fileID: 1431719004580574583, guid: 2244b4b22587d6947be13daab3c3f06f, type: 3}
 --- !u!212 &-564047447023504845
 SpriteRenderer:
   m_ObjectHideFlags: 0
