@@ -46,9 +46,7 @@ public class CustomerManager : MonoBehaviour
     public int moneyTotal;
     public TextMeshProUGUI moneyGainedText;
     public TextMeshProUGUI moneyTotalText;
-    public TextMeshProUGUI moneyFinalText;
-    public TextMeshProUGUI moneyEndlessText;
-
+    
     public int potionVal;
 
     //spawner vars
@@ -215,8 +213,6 @@ public class CustomerManager : MonoBehaviour
 
         moneyGainedText.text = "+ " + moneyGained.ToString() + " SOL";
         moneyTotalText.text = moneyTotal.ToString() + " S";
-        moneyFinalText.text = moneyTotal.ToString();
-        moneyEndlessText.text = moneyTotal.ToString();
     }
     
     public void OrderIncorrect()
@@ -240,10 +236,8 @@ public class CustomerManager : MonoBehaviour
 
         moneyGainedText.text = "+ " + moneyGained.ToString() + " SOL";
         moneyTotalText.text = moneyTotal.ToString() + " S";
-        moneyFinalText.text = moneyTotal.ToString();
-        moneyEndlessText.text = moneyTotal.ToString();
 
-        if (gameManager.endlessSelected)
+        if(gameManager.endlessSelected)
         {
             dayCycle.LoseHP();
         }
