@@ -236,6 +236,11 @@ public class CustomerManager : MonoBehaviour
 
         moneyGainedText.text = "+ " + moneyGained.ToString() + " SOL";
         moneyTotalText.text = moneyTotal.ToString() + " S";
+
+        if(gameManager.endlessSelected)
+        {
+            dayCycle.LoseHP();
+        }
     }
 
 

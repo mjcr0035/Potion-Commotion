@@ -19,6 +19,8 @@ public class HappinessTimer : MonoBehaviour
 
     public CustomerManager customerManager;
 
+    public DayCycle dayCycle;
+
     //public CustomerPrefs customerPrefs;
 
     public float duration;
@@ -67,6 +69,11 @@ public class HappinessTimer : MonoBehaviour
         StopHappinessTimer();
         yield return new WaitForSeconds(3);
         StartCoroutine(customerManager.DespawnCustomer());
+        
+        if(remainingDuration<=0)
+        {
+            dayCycle.LoseHP();
+        }
         
     }
 

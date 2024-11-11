@@ -16,6 +16,13 @@ public class DayCycle : MonoBehaviour
     public float dayCountdown;
     public float intensityTimer;
     public bool dayActive;
+    
+    public int EndlessHP = 3;
+    public GameObject DayTimerUIElement;
+    public GameObject HPParent;
+    public GameObject HP1;
+    public GameObject HP2;
+    public GameObject HP3;
 
     public TextMeshProUGUI TimerText;
 
@@ -26,6 +33,7 @@ public class DayCycle : MonoBehaviour
 
     public GameObject[] levelStartUI;
     public GameObject levelEndUI;
+    public GameObject levelEndUIEndless;
 
     // Start is called before the first frame update
     void Start()
@@ -137,6 +145,8 @@ public class DayCycle : MonoBehaviour
         else if (gameManager.endlessSelected)
         {
             levelStartUI[3].SetActive(true);
+            DayTimerUIElement.SetActive(false);
+            HPParent.SetActive(true);
         }
         else if (gameManager.tutorialSelected)
         {
@@ -179,38 +189,26 @@ public class DayCycle : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
-    public void TutorialSequence()
+    public void LoseHP()
     {
-        //Welcome text
-        //wait for click
-        //Spawn customer
-        //Text prompts taking the customer's order
-        //Wait for order to be taken
-        //Pause satisfaction timer
-        //Texts notes potion order, notes satisfaction timer, prompts switching to backroom
-        //wait for switch
-        //Text prompts to use recipe book
-        //wait for recipe book to open
-        //Text prompts dragging the correct ingredients
-        //wait for 2 ingredients to be in the pot
-        //Text prompts swirling
-        //wait for new potion to spawn
-        //Text prompts dragging to the conveyor belt
-        //wait for potion to collide with conveyor
-        //Text prompts to switch to storefront
-        //wait for switch
-        //Text prompts to drag potion to customer
-        //wait for customer despawn
-        //Text explains satisfaction and corectness relate to score
-        //Wait for click
-        //"You're ready, glhf"
-        //set tutorialMode false
-        //set readyToCountDown true
+        if(gameManager.endlessSelected)
+        {
+            EndlessHP--;
 
-        //ok so kinda scratch that
-        //this might not be the cleanest implementation but it works
-        //instead of having a centralized tutorial function I'm just going to have the functionality daisy-chained through a series of UI elements
-        //since everything which activates the tutorial UI is a different part of the game, different scripts tutorial their specific parts of the game
-        //I think the only other things I need are screenswap and pot2d
+            if(EndlessHP==2)
+            {
+                HP3.SetActive(false);
+            }
+            if(EndlessHP==1)
+            {
+                HP2.SetActive(false);
+            }
+            if(EndlessHP==0)
+            {
+                HP1.SetActive(false);
+                levelEndUIEndless.SetActive(true);
+                customerManager.readyToCountDown=false;
+            }
+        }
     }
 }
