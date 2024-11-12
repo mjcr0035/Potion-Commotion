@@ -213,7 +213,11 @@ public class DayCycle : MonoBehaviour
             dayActive = true;
             dayCountdown = 210;
         }
-        
+        else if (gameManager.endlessSelected)
+        {
+            dayActive = true;
+        }
+
     }
 
     public void BackToMenu()
@@ -245,7 +249,7 @@ public class DayCycle : MonoBehaviour
             {
                 HP1.SetActive(false);
                 levelEndUIEndless.SetActive(true);
-                customerManager.readyToCountDown=false;
+                dayActive = false;
             }
         }
     }

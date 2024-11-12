@@ -91,12 +91,12 @@ public class CustomerManager : MonoBehaviour
     void Update()
     {
        
-        if (readyToCountDown == true)
+        if (readyToCountDown == true && dayCycle.dayActive)
         {
             waveCountdown -= Time.deltaTime;
         }
 
-        if (waveCountdown <= 0)
+        if (waveCountdown <= 0 && dayCycle.dayActive)
         {
             readyToCountDown = false;
             SpawnCustomer();
@@ -262,6 +262,8 @@ public class CustomerManager : MonoBehaviour
         moneyGainedText.text = "+ " + moneyGained.ToString() + " SOL";
         moneyTotalText.text = moneyTotal.ToString() + " S";
         finalMoneyText.text = moneyTotal.ToString() + " SOL!";
+        endlessFinalMoneyText.text = moneyTotal.ToString() + " SOL!";
+        Debug.Log(endlessFinalMoneyText);
 
         //checks if total was under, close to, or exceeded sol quota
         if (moneyTotal <= (solQuota - 51))

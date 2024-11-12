@@ -65,7 +65,7 @@ public class AudioManager : MonoBehaviour
         //fades out current audioclip
         while (timeElapsed < fadeTime)
         {
-            currentMusicTrack.volume = Mathf.Lerp(1, 0f, timeElapsed / fadeTime);
+            currentMusicTrack.volume = Mathf.Lerp(0.55f, 0f, timeElapsed / fadeTime);
             timeElapsed += Time.deltaTime;
 
 
@@ -87,7 +87,7 @@ public class AudioManager : MonoBehaviour
         //fades in desired audioclip
         while (timeElapsed < fadeTime)
         {
-            currentMusicTrack.volume = Mathf.Lerp(0f, 1, timeElapsed / fadeTime);
+            currentMusicTrack.volume = Mathf.Lerp(0f, 0.55f, timeElapsed / fadeTime);
             timeElapsed += Time.deltaTime;
 
             yield return null;
