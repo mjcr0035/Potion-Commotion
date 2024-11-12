@@ -10,13 +10,13 @@ public class AudioManager : MonoBehaviour
     public static AudioManager Instance;
 
     [SerializeField] private AudioSource soundFXObject;
-    [SerializeField] public AudioSource musicObject;
+    [SerializeField] public AudioSource currentMusicTrack;
 
     public AudioClip[] menuSounds;
     public AudioClip[] pageSounds;
     public AudioClip[] swapSounds;
 
-    public AudioClip[] musicTracks;
+    public AudioClip[] musicTrackClips;
 
     private void Awake()
     {
@@ -38,7 +38,6 @@ public class AudioManager : MonoBehaviour
         float clipLength = audioSource.clip.length;
         Destroy(audioSource.gameObject, clipLength);
 
-
     }
 
     public void PlayRandomSoundFXClip(AudioClip[] audioClip, Transform spawnTransform, float volume, float pitch)
@@ -56,21 +55,44 @@ public class AudioManager : MonoBehaviour
 
     }
 
-    public void PlayMusic(AudioClip audioClip, Transform spawnTransform, float volume)
-    {
-        AudioSource audioSource = Instantiate(musicObject, spawnTransform.position, Quaternion.identity);
-        audioSource.clip = audioClip;
-        audioSource.volume = volume;
-        audioSource.Play();
 
-    }
-
-    public void DynMusicSwap(AudioClip newMusicClip, Transform spawnTransform, float volume, float transitionTime, int track)
+    //fade between an existing audioclip in the audio source MusicObject and a desired audioclip
+    public IEnumerator FadeTrack(int newMusicClip)
     {
+        float fadeTime = 1.5f;
+        float timeElapsed = 0;
         
+        //fades out current audioclip
+        while (timeElapsed < fadeTime)
+        {
+            currentMusicTrack.volume = Mathf.Lerp(1, 0f, timeElapsed / fadeTime);
+            timeElapsed += Time.deltaTime;
 
-        //musicTracks[track] = newMusicClip;
 
+            yield return null;
+        }
+        
+        //checks the current point in seconds in the track the song is playing
+        float musicPlaybackPoint = currentMusicTrack.time;
+        
+        //switches clips, then plays at the stored musictrack.time point
+        currentMusicTrack.clip = musicTrackClips[newMusicClip];
+        currentMusicTrack.Play();
+        currentMusicTrack.time = musicPlaybackPoint;
+        
+        //resets fadetime for upcoming while loop        
+        fadeTime = 1.5f;
+        timeElapsed = 0;
+
+        //fades in desired audioclip
+        while (timeElapsed < fadeTime)
+        {
+            currentMusicTrack.volume = Mathf.Lerp(0f, 1, timeElapsed / fadeTime);
+            timeElapsed += Time.deltaTime;
+
+            yield return null;
+        }
+        
     }
 
     public void UISound()

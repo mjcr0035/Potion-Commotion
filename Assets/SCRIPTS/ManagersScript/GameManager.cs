@@ -26,7 +26,6 @@ public class GameManager : MonoBehaviour
 
     private static GameObject sampleInstance;
 
-
     private void Awake()
     {
         if (sampleInstance != null)

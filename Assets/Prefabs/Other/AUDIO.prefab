@@ -301,7 +301,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundFXObject: {fileID: 2787873985561872939}
-  musicObject: {fileID: 1246285333737111021}
+  currentMusicTrack: {fileID: 1246285333737111021}
   menuSounds:
   - {fileID: 8300000, guid: 2b6f6aca0acb0a84e9ebb8eee41fdc0d, type: 3}
   - {fileID: 8300000, guid: 7a4d00963c10aa14fb30995e596651d7, type: 3}
@@ -311,6 +311,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 1dc8059e27c5d414d98e79fef686a12f, type: 3}
   swapSounds:
   - {fileID: 8300000, guid: 6f7151ed4fdc0b4469efec4e87ad0545, type: 3}
+  musicTrackClips:
+  - {fileID: 8300000, guid: 358dd5203d4f0374590a5b4987c23bae, type: 3}
+  - {fileID: 8300000, guid: 63b4319b86f9c67498149c4b1af899fa, type: 3}
+  - {fileID: 8300000, guid: 7d04d6c0a47b69741b13f0da08e29938, type: 3}
 --- !u!1 &6663343226937497468
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,9 +13,15 @@ public class DayCycle : MonoBehaviour
     public bool midDay = false;
     public bool endOfDay = false;
 
+    private bool startOfDayFlag;
+    private bool midDayFlag;
+    private bool endOfDayFlag;
+
     public float dayCountdown;
     public float intensityTimer;
     public bool dayActive;
+
+    
     
     public int EndlessHP = 3;
     public GameObject DayTimerUIElement;
@@ -31,9 +37,14 @@ public class DayCycle : MonoBehaviour
     public CustomerManager customerManager;
 
 
-    public GameObject[] levelStartUI;
+    public GameObject levelStartUI;
+    public GameObject[] otherStartUI;
     public GameObject levelEndUI;
     public GameObject levelEndUIEndless;
+
+    public AudioClip quotaFailedSound;
+    public AudioClip quotaMetSound;
+    public AudioClip quotaExceededSound;
 
     // Start is called before the first frame update
     void Start()
@@ -68,17 +79,17 @@ public class DayCycle : MonoBehaviour
 
         if (intensityTimer >= 0 && intensityTimer <= 60) //level 1 / start of day (calm)
         {
-            IntensityState(true, false, false);
+            IntensityUpdate(true, false, false);
             
         }
         if (intensityTimer >= 61 && intensityTimer <= 120) //level 2 / midday (rush)
         {
-            IntensityState(false, true, false);
+            IntensityUpdate(false, true, false);
             
         }
         if (intensityTimer >= 121 && intensityTimer <= 180) //level3 / end of day (intense)
         {
-            IntensityState(false, false, true);
+            IntensityUpdate(false, false, true);
             
         }
 
@@ -97,25 +108,28 @@ public class DayCycle : MonoBehaviour
     }
 
     //updates intensity day variables and displays respective ui
-    public void IntensityState (bool startofday, bool midday, bool endofday)
+    public void IntensityUpdate (bool startofday, bool midday, bool endofday)
     {
         startOfDay = startofday;
         midDay = midday;
         endOfDay = endofday;
 
-        //displays day cycle clock UI anim at each point
+        //fades in audio track at key point in the day and displays intensity change UI
 
-        if (startOfDay)
+        if (startOfDay && !startOfDayFlag)
         {
-            
+            Debug.Log("its the start of the day!");
+            startOfDayFlag = true;
         }
-        else if (midDay)
+        else if (midDay && !midDayFlag)
         {
-            
+            StartCoroutine(AudioManager.Instance.FadeTrack(1));
+            midDayFlag = true;
         }
-        else if (endOfDay)
+        else if (endOfDay && !endOfDayFlag)
         {
-            
+            StartCoroutine(AudioManager.Instance.FadeTrack(2));
+            endOfDayFlag = true;
         }
     }
 
@@ -123,6 +137,22 @@ public class DayCycle : MonoBehaviour
     public void DayOver()
     {
         levelEndUI.SetActive(true);
+
+        AudioManager.Instance.currentMusicTrack.volume = 0.1f;
+
+        if (customerManager.quotaFailed)
+        {
+            AudioManager.Instance.PlaySoundFXClip(quotaFailedSound, transform, 0.6f, 1f, "QuotaSFX");
+        }
+        else if (customerManager.quotaMet)
+        {
+            AudioManager.Instance.PlaySoundFXClip(quotaMetSound, transform, 0.6f, 1f, "QuotaSFX");
+        }
+        else if (customerManager.quotaExceeded)
+        {
+            AudioManager.Instance.PlaySoundFXClip(quotaExceededSound, transform, 0.6f, 1f, "QuotaSFX");
+        }
+
         happinessTimer.StopHappinessTimer();
         customerManager.waveCountdown = 9999999;
 
@@ -132,25 +162,33 @@ public class DayCycle : MonoBehaviour
     {
         if (gameManager.levelOneSelected)
         {
-            levelStartUI[0].SetActive(true);
+            levelStartUI.SetActive(true);
+            customerManager.solQuota = 250;
+            customerManager.loreText.text = "On the first day...";
         }
         else if (gameManager.levelTwoSelected)
         {
-            levelStartUI[1].SetActive(true);
+            levelStartUI.SetActive(true);
+            customerManager.solQuota = 750;
+            customerManager.dayText.text = "Day Two";
+            customerManager.loreText.text = "On the second day...";
         }
         else if (gameManager.levelThreeSelected)
         {
-            levelStartUI[2].SetActive(true);
+            levelStartUI.SetActive(true);
+            customerManager.solQuota = 1250;
+            customerManager.dayText.text = "Day Three";
+            customerManager.loreText.text = "On the third day...";
         }
         else if (gameManager.endlessSelected)
         {
-            levelStartUI[3].SetActive(true);
+            otherStartUI[0].SetActive(true);
             DayTimerUIElement.SetActive(false);
             HPParent.SetActive(true);
         }
         else if (gameManager.tutorialSelected)
         {
-            levelStartUI[4].SetActive(true);
+            otherStartUI[1].SetActive(true);
         }
         
     }
@@ -163,17 +201,17 @@ public class DayCycle : MonoBehaviour
         if (gameManager.levelOneSelected)
         {
             dayActive = true;
-            dayCountdown = 60;
+            dayCountdown = 90;
         }
         else if (gameManager.levelTwoSelected)
         {
             dayActive = true;
-            dayCountdown = 120;
+            dayCountdown = 150;
         }
         else if (gameManager.levelThreeSelected)
         {
             dayActive = true;
-            dayCountdown = 180;
+            dayCountdown = 210;
         }
         
     }

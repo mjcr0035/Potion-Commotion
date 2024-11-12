@@ -10,53 +10,66 @@ public class CustomerManager : MonoBehaviour
     //this script handles customer spawns and ideally orders as well in the future
     //spawns a random customer prefab from a list when spacebar is pressed, and sets their animator and sprite renderer
     //also despawns a customer when an order is delivered (see customerprefs.cs)
-    
-    public Animator customerAC;
+    public GameManager gameManager;
+    public DayCycle dayCycle;
+    public GameObject TUTORIAL4;
 
-    public SpriteRenderer customerSprite;
-
+    [Header("CUSTOMER REFS")]
     public GameObject[] customerPrefabs;
-
-    //ensures customer is a child of register screen for swapping to work
-    //might be removed when swapping is updated to camera
+    public Animator customerAC;
+    public SpriteRenderer customerSprite;
+    
+    // to ensure customer is a child of register screen
     public GameObject registerParent;
 
     //ui vars
-    //public GameObject orderUI;
+    [Header("UI VARS")]
     public GameObject happinessUI;
     public GameObject feedbackUI;
     public GameObject SuccessUI;
     public GameObject FailureUI;
 
     //happiness vars
+    [Header("HAPPINESS VARS")]
     public int customerHappiness;
     public HappinessTimer happinessTimer;
 
-    public GameManager gameManager;
-    public DayCycle dayCycle;
-
     //audio
+    [Header("AUDIO CLIPS")]
     public AudioClip customerEnterSound;
     public AudioClip solGainedSound;
     public AudioClip orderCorrectSound;
     public AudioClip orderIncorrectSound;
 
+    
     //money vars
+    [Header("MONEY VARS")]
     public int moneyGained;
     public int moneyTotal;
+    public int solQuota;
+    public int potionVal;
+    public bool quotaFailed = false;
+    public bool quotaMet = false;
+    public bool quotaExceeded = false;
+
+    //money and UI text vars
+    [Header("TEXT VARS")]
+
     public TextMeshProUGUI moneyGainedText;
     public TextMeshProUGUI moneyTotalText;
-    
-    public int potionVal;
+    public TextMeshProUGUI solQuotaText;
+    public TextMeshProUGUI solQuotaMetText;
+    public TextMeshProUGUI finalMoneyText;
+    public TextMeshProUGUI endlessFinalMoneyText;
+    public TextMeshProUGUI dayText;
+    public TextMeshProUGUI loreText;
 
     //spawner vars
+    [Header("SPAWN VARS")]
     [SerializeField] public float waveCountdown;
     public bool readyToCountDown;
     public GameObject newCustomer;
 
-    public GameObject endText;
-
-    public GameObject TUTORIAL4;
 
 
     private void Start()
@@ -64,9 +77,14 @@ public class CustomerManager : MonoBehaviour
         FailureUI.SetActive(false);
         SuccessUI.SetActive(false);
         moneyGainedText.enabled = false;
+        quotaFailed = true;
+        quotaMet = false;
+        quotaExceeded = false;
 
         gameManager = FindObjectOfType<GameManager>();
-        
+
+        solQuotaText.text = solQuota.ToString() + " SOL";
+
     }
 
     // Update is called once per frame
@@ -196,7 +214,7 @@ public class CustomerManager : MonoBehaviour
     {
         FailureUI.SetActive(false);
         SuccessUI.SetActive(true);
-        //animate moneygained trigger eventually
+        
         moneyGainedText.enabled = true;
 
         potionVal = Random.Range(60, 100);
@@ -205,21 +223,17 @@ public class CustomerManager : MonoBehaviour
 
         Debug.Log("order correct, customer left this much gold:" + moneyGained + " you had this many seconds left: " + happinessTimer.remainingDuration);
 
-        //ordercorrect sound here
         AudioManager.Instance.PlaySoundFXClip(orderCorrectSound, transform, 0.5f, Random.Range(0.9f, 1.3f), "OrderCorrectSFX");
-        AudioManager.Instance.PlaySoundFXClip(solGainedSound, transform, 0.7f, Random.Range(0.9f, 1.3f), "SolGainedSFX");
 
-        moneyTotal += moneyGained;
+        MoneyUpdate();
 
-        moneyGainedText.text = "+ " + moneyGained.ToString() + " SOL";
-        moneyTotalText.text = moneyTotal.ToString() + " S";
     }
     
     public void OrderIncorrect()
     {
         FailureUI.SetActive(true);
         SuccessUI.SetActive(false);
-        //animate moneygained trigger eventually
+
         moneyGainedText.enabled = true;
 
         potionVal = Random.Range(0, 15);
@@ -228,20 +242,45 @@ public class CustomerManager : MonoBehaviour
 
         Debug.Log("order incorrect, customer left this much gold:" + moneyGained + " you had this many seconds left: " + happinessTimer.remainingDuration);
 
-        //orderincorrect sound here
         AudioManager.Instance.PlaySoundFXClip(orderIncorrectSound, transform, 0.5f, Random.Range(0.9f, 1.3f), "OrderInorrectSFX");
-        AudioManager.Instance.PlaySoundFXClip(solGainedSound, transform, 0.7f, Random.Range(0.9f, 1.3f), "SolGainedSFX");
 
-        moneyTotal += moneyGained;
+        MoneyUpdate();
 
-        moneyGainedText.text = "+ " + moneyGained.ToString() + " SOL";
-        moneyTotalText.text = moneyTotal.ToString() + " S";
-
-        if(gameManager.endlessSelected)
+        if (gameManager.endlessSelected)
         {
             dayCycle.LoseHP();
         }
     }
 
+    //updates money gained and total, as well as level end UI total, and updates quota performance
+    public void MoneyUpdate()
+    {
+        
+        AudioManager.Instance.PlaySoundFXClip(solGainedSound, transform, 0.7f, Random.Range(0.9f, 1.3f), "SolGainedSFX");
 
+        moneyTotal += moneyGained;
+        moneyGainedText.text = "+ " + moneyGained.ToString() + " SOL";
+        moneyTotalText.text = moneyTotal.ToString() + " S";
+        finalMoneyText.text = moneyTotal.ToString() + " SOL!";
+
+        //checks if total was under, close to, or exceeded sol quota
+        if (moneyTotal <= (solQuota - 51))
+        {
+            solQuotaMetText.text = "You didn't meet the Sol Quota!";
+            quotaFailed = true;
+        }
+        else if (moneyTotal >= Mathf.Min((solQuota - 49), solQuota) && moneyTotal <= Mathf.Max(solQuota, (solQuota + 100)))
+        {
+            solQuotaMetText.text = "You met the Sol Quota!";
+            quotaFailed = false;
+            quotaMet = true;
+        }
+        else if (moneyTotal >= (solQuota + 200))
+        {
+            solQuotaMetText.text = "You blew past the Sol Quota!";
+            quotaFailed = false;
+            quotaMet = false;
+            quotaExceeded = true;
+        }
+    }
 }
