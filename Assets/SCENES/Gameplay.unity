@@ -23857,9 +23857,6 @@ MonoBehaviour:
   TUTORIAL4: {fileID: 2054804261}
   customerPrefabs:
   - {fileID: 2429268544715530355, guid: e41b46620da8c8d40af8d6a49a1e828c, type: 3}
-  - {fileID: 2429268544715530355, guid: 414b1519195639941a48529004bdb45a, type: 3}
-  - {fileID: 2429268544715530355, guid: 68f9638cb4b4c9e4caf5aff7fcfa78c0, type: 3}
-  - {fileID: 2429268544715530355, guid: ae4611b144309c54eafdb7a924ad6099, type: 3}
   customerAC: {fileID: 6257438502393723650, guid: e41b46620da8c8d40af8d6a49a1e828c, type: 3}
   customerSprite: {fileID: 0}
   registerParent: {fileID: 1159541521}
