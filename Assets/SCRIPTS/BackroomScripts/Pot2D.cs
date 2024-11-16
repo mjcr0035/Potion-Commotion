@@ -56,8 +56,8 @@ public class Pot2D : MonoBehaviour
 
     public GameObject TUTORIAL3;
 
- 
 
+    public GameObject Arrow;
 
 
     void Start()
@@ -239,7 +239,10 @@ public class Pot2D : MonoBehaviour
                                 
                                 CreateNewItem(recipe.Value);
                                 SwirlingReady.SetActive(false);
+                                Arrow.SetActive(true);
+
                                 
+
                                 return;
                             }
                         }
@@ -262,7 +265,7 @@ public class Pot2D : MonoBehaviour
 
         // Clear the list of added ingredients
         addedIngredients.Clear();
-      
+        Arrow.SetActive(false);
 
         // Find all ingredients in the scene and reset their 'hasBeenAdded' flag
         DragIngredient2D[] allIngredients = FindObjectsOfType<DragIngredient2D>();

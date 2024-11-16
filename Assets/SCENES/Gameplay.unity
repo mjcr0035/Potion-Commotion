@@ -6416,6 +6416,7 @@ MonoBehaviour:
   SwirlingReady: {fileID: 1857790706}
   gameManager: {fileID: 0}
   TUTORIAL3: {fileID: 1784002783}
+  Arrow: {fileID: 7616524972184006276}
 --- !u!58 &500190194
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -7125,6 +7126,7 @@ GameObject:
   - component: {fileID: 584399035}
   - component: {fileID: 584399034}
   - component: {fileID: 584399036}
+  - component: {fileID: 584399037}
   m_Layer: 0
   m_Name: IceConveyor
   m_TagString: Conveyor
@@ -7292,6 +7294,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &584399037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 584399031}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6e8afc44414cc241a8b4af66a4ca463, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Arrow: {fileID: 7616524972184006276}
 --- !u!1 &599348827
 GameObject:
   m_ObjectHideFlags: 0

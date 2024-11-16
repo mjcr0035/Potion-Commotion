@@ -13,13 +13,14 @@ public class DraggableObject : MonoBehaviour
     public AudioClip[] potionPickupSounds;
     public AudioClip[] potionDropSounds;
     public AudioClip conveyorSound;
+   
 
     
 
 
     void Start()
     {
-       
+        
     }
 
     // Called when the mouse is pressed down on the object
@@ -53,6 +54,7 @@ public class DraggableObject : MonoBehaviour
         // Check if the object is not being dragged and it's inside the collider with the specified tag
         if (!isDragging && other.CompareTag("Conveyor"))
         {
+
             //ensures audioclip will only play once while dragging (hopefully)
             if (!GameObject.Find("ConveyorSFX"))
             {
