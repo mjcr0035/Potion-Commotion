@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7264764920256611746}
   m_Layer: 3
   m_Name: Potion1Test
-  m_TagString: Potion
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -123,7 +123,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 0.64, y: 0.64}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -173,4 +173,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveDistance: 1
   movementSpeed: 2
-  soundManager: {fileID: 0}
+  potionPickupSounds: []
+  potionDropSounds: []
+  conveyorSound: {fileID: 0}
+  ConveyorY: -3.5
