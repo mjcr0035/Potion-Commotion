@@ -40,6 +40,7 @@ public class DayCycle : MonoBehaviour
     public TextMeshProUGUI intensitySwitchTextBG;
     public Animator clockHandAC;
 
+    public GameObject clockUI;
     public GameObject levelStartUI;
     public GameObject[] otherStartUI;
     public GameObject levelEndUI;
@@ -213,6 +214,7 @@ public class DayCycle : MonoBehaviour
             otherStartUI[0].SetActive(true);
             DayTimerUIElement.SetActive(false);
             HPParent.SetActive(true);
+            clockUI.SetActive(false);
         }
         else if (gameManager.tutorialSelected)
         {
@@ -229,27 +231,26 @@ public class DayCycle : MonoBehaviour
         if (gameManager.levelOneSelected)
         {
             dayActive = true;
-            initialDayCountdown = 100;
+            initialDayCountdown = 120;
             dayCountdown = initialDayCountdown;
         }
         else if (gameManager.levelTwoSelected)
         {
             dayActive = true;
-            initialDayCountdown = 150;
+            initialDayCountdown = 180;
             dayCountdown = initialDayCountdown;
 
         }
         else if (gameManager.levelThreeSelected)
         {
             dayActive = true;
-            initialDayCountdown = 210;
+            initialDayCountdown = 240;
             dayCountdown = initialDayCountdown;
         }
         else if (gameManager.endlessSelected)
         {
             dayActive = true;
-            clockHandAC.SetTrigger("Start");
-            clockHandAC.speed = (60 / 10000);
+            
         }
 
         intensitySwitchText.text = "Start of Day";
