@@ -17,6 +17,7 @@ public class DayCycle : MonoBehaviour
     private bool midDayFlag;
     private bool endOfDayFlag;
 
+    public float initialDayCountdown;
     public float dayCountdown;
     public float intensityTimer;
     public bool dayActive;
@@ -37,8 +38,7 @@ public class DayCycle : MonoBehaviour
     public Animator intensitySwitchAC;
     public TextMeshProUGUI intensitySwitchText;
     public TextMeshProUGUI intensitySwitchTextBG;
-
-    public RectTransform clockHand;
+    public Animator clockHandAC;
 
     public GameObject levelStartUI;
     public GameObject[] otherStartUI;
@@ -57,7 +57,6 @@ public class DayCycle : MonoBehaviour
         dayActive = false;
 
         ShowLevelUI();
-
     }
 
     // Update is called once per frame
@@ -80,22 +79,28 @@ public class DayCycle : MonoBehaviour
             }
 
         }
+        
+        //checks if intensity timer reaches ranges between the 1st,2nd, and 3rd 'thirds' of the day.
 
-        if (intensityTimer >= 0 && intensityTimer <= 60) //level 1 / start of day (calm)
+        if (dayActive)
         {
-            IntensityUpdate(true, false, false);
-            
+            if (intensityTimer >= 0 && intensityTimer < (initialDayCountdown / 3)) //level 1 / start of day (calm)
+            {
+                IntensityUpdate(true, false, false);
+
+            }
+            if (intensityTimer >= (initialDayCountdown / 3) && intensityTimer < (2 * initialDayCountdown / 3)) //level 2 / midday (rush)
+            {
+                IntensityUpdate(false, true, false);
+
+            }
+            if (intensityTimer >= (2 * initialDayCountdown / 3) && intensityTimer <= initialDayCountdown) //level3 / end of day (intense)
+            {
+                IntensityUpdate(false, false, true);
+
+            }
         }
-        if (intensityTimer >= 61 && intensityTimer <= 100) //level 2 / midday (rush)
-        {
-            IntensityUpdate(false, true, false);
-            
-        }
-        if (intensityTimer >= 101 && intensityTimer <= 210) //level3 / end of day (intense)
-        {
-            IntensityUpdate(false, false, true);
-            
-        }
+       
 
     }
 
@@ -108,9 +113,8 @@ public class DayCycle : MonoBehaviour
         float seconds = Mathf.FloorToInt(currentDayTime % 60);
 
         TimerText.text = string.Format("{0:00} : {1:00}", minutes, seconds);
-
-        clockHand.rotation = Quaternion.Euler(0, 0, (180 - currentDayTime));
-        Debug.Log(currentDayTime);
+        //clockHand.rotation = Quaternion.Euler(0, 0, (180 - currentDayTime));
+        //Debug.Log(currentDayTime);
     }
 
     //updates intensity day variables and displays respective ui
@@ -130,22 +134,28 @@ public class DayCycle : MonoBehaviour
         }
         else if (midDay && !midDayFlag)
         {
-            Debug.Log("its the midday of the day!");
+            Debug.Log("its midday!");
+
             AudioManager.Instance.PlaySoundFXClip(intensitySwitch, transform, 0.4f, 1f, "intensitySFX");
             StartCoroutine(AudioManager.Instance.FadeTrack(1));
+            
             intensitySwitchText.text = "Midday";
             intensitySwitchTextBG.text = "Midday";
             intensitySwitchAC.SetTrigger("Show");
+            
             midDayFlag = true;
         }
         else if (endOfDay && !endOfDayFlag)
         {
             Debug.Log("its the end of the day!");
+
             AudioManager.Instance.PlaySoundFXClip(intensitySwitch, transform, 0.4f, 1f, "intensitySFX");
             StartCoroutine(AudioManager.Instance.FadeTrack(2));
+            
             intensitySwitchText.text = "End of Day";
             intensitySwitchTextBG.text = "End of Day";
             intensitySwitchAC.SetTrigger("Show");
+            
             endOfDayFlag = true;
         }
     }
@@ -155,19 +165,19 @@ public class DayCycle : MonoBehaviour
     {
         levelEndUI.SetActive(true);
 
-        AudioManager.Instance.currentMusicTrack.volume = 0.1f;
+        AudioManager.Instance.currentMusicTrack.volume = 0.05f;
 
         if (customerManager.quotaFailed)
         {
-            AudioManager.Instance.PlaySoundFXClip(quotaFailedSound, transform, 0.6f, 1f, "QuotaSFX");
+            AudioManager.Instance.PlaySoundFXClip(quotaFailedSound, transform, 0.4f, 1f, "QuotaSFX");
         }
         else if (customerManager.quotaMet)
         {
-            AudioManager.Instance.PlaySoundFXClip(quotaMetSound, transform, 0.6f, 1f, "QuotaSFX");
+            AudioManager.Instance.PlaySoundFXClip(quotaMetSound, transform, 0.4f, 1f, "QuotaSFX");
         }
         else if (customerManager.quotaExceeded)
         {
-            AudioManager.Instance.PlaySoundFXClip(quotaExceededSound, transform, 0.6f, 1f, "QuotaSFX");
+            AudioManager.Instance.PlaySoundFXClip(quotaExceededSound, transform, 0.4f, 1f, "QuotaSFX");
         }
 
         happinessTimer.StopHappinessTimer();
@@ -219,26 +229,37 @@ public class DayCycle : MonoBehaviour
         if (gameManager.levelOneSelected)
         {
             dayActive = true;
-            dayCountdown = 90;
-            AudioManager.Instance.PlaySoundFXClip(intensitySwitch, transform, 0.3f, 1f, "intensitySFX");
-            intensitySwitchText.text = "Start of Day";
-            intensitySwitchTextBG.text = "Start of Day";
-            intensitySwitchAC.SetTrigger("Show");
+            initialDayCountdown = 100;
+            dayCountdown = initialDayCountdown;
         }
         else if (gameManager.levelTwoSelected)
         {
             dayActive = true;
-            dayCountdown = 150;
+            initialDayCountdown = 150;
+            dayCountdown = initialDayCountdown;
+
         }
         else if (gameManager.levelThreeSelected)
         {
             dayActive = true;
-            dayCountdown = 210;
+            initialDayCountdown = 210;
+            dayCountdown = initialDayCountdown;
         }
         else if (gameManager.endlessSelected)
         {
             dayActive = true;
+            clockHandAC.SetTrigger("Start");
+            clockHandAC.speed = (60 / 10000);
         }
+
+        intensitySwitchText.text = "Start of Day";
+        intensitySwitchTextBG.text = "Start of Day";
+        intensitySwitchAC.SetTrigger("Show");
+
+        AudioManager.Instance.PlaySoundFXClip(intensitySwitch, transform, 0.3f, 1f, "intensitySFX");
+
+        clockHandAC.SetTrigger("Start");
+        clockHandAC.speed = (60 / dayCountdown);
 
     }
 

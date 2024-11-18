@@ -60,7 +60,7 @@ public class HappinessTimer : MonoBehaviour
 
             if (remainingDuration == 3)
             {
-                AudioManager.Instance.PlaySoundFXClip(timerEndingSound, transform, 0.45f, 1f, "TimerSFX");
+                AudioManager.Instance.PlaySoundFXClip(timerEndingSound, transform, 0.25f, 1f, "TimerSFX");
             }
 
         }
