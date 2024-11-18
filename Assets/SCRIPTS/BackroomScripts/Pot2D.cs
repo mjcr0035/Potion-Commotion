@@ -44,6 +44,7 @@ public class Pot2D : MonoBehaviour
     public AudioClip[] potionMadeSound;
 
     public GameObject SwirlingReady;
+    public Animator SwirlIndicator;
 
     private bool isRecipeBeingProcessed = false;
 
@@ -58,6 +59,8 @@ public class Pot2D : MonoBehaviour
 
 
     public GameObject Arrow;
+
+    
 
 
     void Start()
@@ -192,6 +195,7 @@ public class Pot2D : MonoBehaviour
         isSwirling = false;
         swirlCount = 0;
         Debug.Log("Ingredients have been reset after creating new item.");
+        SwirlingReady.SetActive(false);
     }
 
     void DetectSwirl()
@@ -225,6 +229,9 @@ public class Pot2D : MonoBehaviour
                     swirlCount++;
                     inFirstQuadrant = false;
                     Debug.Log("Swirl detected! Total swirls: " + swirlCount);
+
+                    //spin indiactor as player feedback
+                    SwirlIndicator.SetTrigger("SwirlRecieved");
 
                     if (swirlCount >= 2)
                     {

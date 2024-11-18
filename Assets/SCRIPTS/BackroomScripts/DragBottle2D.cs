@@ -13,6 +13,8 @@ public class DraggableObject : MonoBehaviour
     public AudioClip[] potionPickupSounds;
     public AudioClip[] potionDropSounds;
     public AudioClip conveyorSound;
+
+    public float ConveyorY = -3.5f;
    
 
     
@@ -61,8 +63,9 @@ public class DraggableObject : MonoBehaviour
                 AudioManager.Instance.PlaySoundFXClip(conveyorSound, transform, 0.6f, 1f, "ConveyorSFX");
             }
             
+            //Snap to conveyor height
             // Move the object to the left smoothly over time
-            transform.position = new Vector2(transform.position.x - moveDistance * Time.deltaTime * movementSpeed, transform.position.y);
+            transform.position = new Vector2(transform.position.x - moveDistance * Time.deltaTime * movementSpeed, ConveyorY);
 
           
         }
