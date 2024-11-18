@@ -104,11 +104,6 @@ public class CustomerManager : MonoBehaviour
 
     }
 
-
-
-    //matthew - day system:
-    //
-
     public void SpawnCustomer()
     {
         //if customer prefabs are assigned, and there is no customer on screen currently, spawn customer.
@@ -152,10 +147,6 @@ public class CustomerManager : MonoBehaviour
             {
                 happinessTimer.StartHappinessTimer(Random.Range(10, 15));
             }
-
-            //happinessTimer.StartHappinessTimer(happinessTimer.duration);
-
-
 
         }
         
@@ -202,7 +193,6 @@ public class CustomerManager : MonoBehaviour
                 TUTORIAL4.gameObject.SetActive(true);
             }
         }
-               
     }
 
     //formula for calculating score:
@@ -242,7 +232,7 @@ public class CustomerManager : MonoBehaviour
 
         Debug.Log("order incorrect, customer left this much gold:" + moneyGained + " you had this many seconds left: " + happinessTimer.remainingDuration);
 
-        AudioManager.Instance.PlaySoundFXClip(orderIncorrectSound, transform, 0.5f, Random.Range(0.9f, 1.3f), "OrderInorrectSFX");
+        AudioManager.Instance.PlaySoundFXClip(orderIncorrectSound, transform, 0.5f, Random.Range(0.9f, 1.3f), "OrderIncorrectSFX");
 
         MoneyUpdate();
 

@@ -81,7 +81,7 @@ public class AudioManager : MonoBehaviour
         currentMusicTrack.time = musicPlaybackPoint;
         
         //resets fadetime for upcoming while loop        
-        fadeTime = 1.5f;
+        fadeTime = 1f;
         timeElapsed = 0;
 
         //fades in desired audioclip

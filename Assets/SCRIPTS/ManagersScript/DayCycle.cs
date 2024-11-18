@@ -20,8 +20,6 @@ public class DayCycle : MonoBehaviour
     public float dayCountdown;
     public float intensityTimer;
     public bool dayActive;
-
-    
     
     public int EndlessHP = 3;
     public GameObject DayTimerUIElement;
@@ -36,6 +34,11 @@ public class DayCycle : MonoBehaviour
     public HappinessTimer happinessTimer;
     public CustomerManager customerManager;
 
+    public Animator intensitySwitchAC;
+    public TextMeshProUGUI intensitySwitchText;
+    public TextMeshProUGUI intensitySwitchTextBG;
+
+    public RectTransform clockHand;
 
     public GameObject levelStartUI;
     public GameObject[] otherStartUI;
@@ -45,6 +48,7 @@ public class DayCycle : MonoBehaviour
     public AudioClip quotaFailedSound;
     public AudioClip quotaMetSound;
     public AudioClip quotaExceededSound;
+    public AudioClip intensitySwitch;
 
     // Start is called before the first frame update
     void Start()
@@ -82,12 +86,12 @@ public class DayCycle : MonoBehaviour
             IntensityUpdate(true, false, false);
             
         }
-        if (intensityTimer >= 61 && intensityTimer <= 120) //level 2 / midday (rush)
+        if (intensityTimer >= 61 && intensityTimer <= 100) //level 2 / midday (rush)
         {
             IntensityUpdate(false, true, false);
             
         }
-        if (intensityTimer >= 121 && intensityTimer <= 180) //level3 / end of day (intense)
+        if (intensityTimer >= 101 && intensityTimer <= 210) //level3 / end of day (intense)
         {
             IntensityUpdate(false, false, true);
             
@@ -105,6 +109,8 @@ public class DayCycle : MonoBehaviour
 
         TimerText.text = string.Format("{0:00} : {1:00}", minutes, seconds);
 
+        clockHand.rotation = Quaternion.Euler(0, 0, (180 - currentDayTime));
+        Debug.Log(currentDayTime);
     }
 
     //updates intensity day variables and displays respective ui
@@ -114,21 +120,32 @@ public class DayCycle : MonoBehaviour
         midDay = midday;
         endOfDay = endofday;
 
-        //fades in audio track at key point in the day and displays intensity change UI
+        //fades in audio track at key point in the day, displays intensity change UI, plays intensity switch cue
 
         if (startOfDay && !startOfDayFlag)
         {
             Debug.Log("its the start of the day!");
+            
             startOfDayFlag = true;
         }
         else if (midDay && !midDayFlag)
         {
+            Debug.Log("its the midday of the day!");
+            AudioManager.Instance.PlaySoundFXClip(intensitySwitch, transform, 0.4f, 1f, "intensitySFX");
             StartCoroutine(AudioManager.Instance.FadeTrack(1));
+            intensitySwitchText.text = "Midday";
+            intensitySwitchTextBG.text = "Midday";
+            intensitySwitchAC.SetTrigger("Show");
             midDayFlag = true;
         }
         else if (endOfDay && !endOfDayFlag)
         {
+            Debug.Log("its the end of the day!");
+            AudioManager.Instance.PlaySoundFXClip(intensitySwitch, transform, 0.4f, 1f, "intensitySFX");
             StartCoroutine(AudioManager.Instance.FadeTrack(2));
+            intensitySwitchText.text = "End of Day";
+            intensitySwitchTextBG.text = "End of Day";
+            intensitySwitchAC.SetTrigger("Show");
             endOfDayFlag = true;
         }
     }
@@ -163,22 +180,23 @@ public class DayCycle : MonoBehaviour
         if (gameManager.levelOneSelected)
         {
             levelStartUI.SetActive(true);
-            customerManager.solQuota = 250;
-            customerManager.loreText.text = "On the first day...";
+            customerManager.solQuota = 500;
+            customerManager.dayText.text = "Day One";
+            customerManager.loreText.text = "It's the first day of your brand new shop! You make sure all your ingredients are in stock and prepare yourself for customers to come in!";
         }
         else if (gameManager.levelTwoSelected)
         {
             levelStartUI.SetActive(true);
-            customerManager.solQuota = 750;
+            customerManager.solQuota = 1000;
             customerManager.dayText.text = "Day Two";
-            customerManager.loreText.text = "On the second day...";
+            customerManager.loreText.text = "On the next day, you notice a line forming outside your shop! You heat up your cauldron and empty your Sol collector for a wave of new customers.";
         }
         else if (gameManager.levelThreeSelected)
         {
             levelStartUI.SetActive(true);
-            customerManager.solQuota = 1250;
+            customerManager.solQuota = 1500;
             customerManager.dayText.text = "Day Three";
-            customerManager.loreText.text = "On the third day...";
+            customerManager.loreText.text = "It's the last day of your potion shop's grand opening! Word has gotten around and your shift is longer! You get ready for a hectic day!";
         }
         else if (gameManager.endlessSelected)
         {
@@ -202,6 +220,10 @@ public class DayCycle : MonoBehaviour
         {
             dayActive = true;
             dayCountdown = 90;
+            AudioManager.Instance.PlaySoundFXClip(intensitySwitch, transform, 0.3f, 1f, "intensitySFX");
+            intensitySwitchText.text = "Start of Day";
+            intensitySwitchTextBG.text = "Start of Day";
+            intensitySwitchAC.SetTrigger("Show");
         }
         else if (gameManager.levelTwoSelected)
         {
@@ -233,19 +255,19 @@ public class DayCycle : MonoBehaviour
 
     public void LoseHP()
     {
-        if(gameManager.endlessSelected)
+        if (gameManager.endlessSelected)
         {
             EndlessHP--;
 
-            if(EndlessHP==2)
+            if (EndlessHP == 2)
             {
                 HP3.SetActive(false);
             }
-            if(EndlessHP==1)
+            if (EndlessHP == 1)
             {
                 HP2.SetActive(false);
             }
-            if(EndlessHP==0)
+            if (EndlessHP == 0)
             {
                 HP1.SetActive(false);
                 levelEndUIEndless.SetActive(true);
