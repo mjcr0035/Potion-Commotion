@@ -311,6 +311,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 1dc8059e27c5d414d98e79fef686a12f, type: 3}
   swapSounds:
   - {fileID: 8300000, guid: 6f7151ed4fdc0b4469efec4e87ad0545, type: 3}
+  pauseSound: {fileID: 8300000, guid: 5fba2617e536c9644b85b88226536111, type: 3}
+  unpauseSound: {fileID: 8300000, guid: d6630480ca68c2b488213fe466242247, type: 3}
   musicTrackClips:
   - {fileID: 8300000, guid: 358dd5203d4f0374590a5b4987c23bae, type: 3}
   - {fileID: 8300000, guid: 63b4319b86f9c67498149c4b1af899fa, type: 3}

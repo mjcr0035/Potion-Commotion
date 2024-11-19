@@ -1887,6 +1887,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 300279765}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: UISound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &154138086
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9181,6 +9193,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 300279765}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: UnpauseSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &806122975
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12892,6 +12916,18 @@ MonoBehaviour:
       - m_Target: {fileID: 764266500}
         m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
         m_MethodName: Pause
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 300279765}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: PauseSound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -20258,6 +20294,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 300279765}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: UISound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1452603593
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23896,8 +23944,16 @@ MonoBehaviour:
   happinessTimer: {fileID: 1666720745}
   customerEnterSound: {fileID: 8300000, guid: 01219f553063c8242a4da6b029e7ecab, type: 3}
   solGainedSound: {fileID: 8300000, guid: d35f232365b65db4e90a199f0dcc9e9a, type: 3}
-  orderCorrectSound: {fileID: 8300000, guid: ce5f56e71bc53dc40bb005503344dc00, type: 3}
-  orderIncorrectSound: {fileID: 8300000, guid: c860fd678a4038f4d9a0060686e089ef, type: 3}
+  orderCorrectSound: {fileID: 8300000, guid: a1ddb97422521514a8eb48cf5878448e, type: 3}
+  orderIncorrectSound: {fileID: 8300000, guid: 394997b8dbe23224281b20016c286d36, type: 3}
+  wolfHappy: {fileID: 8300000, guid: 6cc750145960419488fa7bbbd42144b1, type: 3}
+  wolfMad: {fileID: 8300000, guid: 5e6bffa1a183b2a448e17a7ffa4c5cc2, type: 3}
+  dragonHappy: {fileID: 8300000, guid: bbd102faa201f3340ab97be43ef0f5ca, type: 3}
+  dragonMad: {fileID: 8300000, guid: cfd56ab63ed5a0043a64aa213ed00ab1, type: 3}
+  snakeHappy: {fileID: 8300000, guid: 116aea0072a8bf44891fb844293f7246, type: 3}
+  snakeMad: {fileID: 8300000, guid: 4d618590f14154e48a98ac4b2f19e870, type: 3}
+  pinHappy: {fileID: 8300000, guid: 96219299cdc444f47a7b255a13dda2b6, type: 3}
+  pinMad: {fileID: 8300000, guid: 9ac916c6050f51947baa015f7a18887b, type: 3}
   moneyGained: 0
   moneyTotal: 0
   solQuota: 0
@@ -24963,6 +25019,18 @@ MonoBehaviour:
       - m_Target: {fileID: 764266500}
         m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
         m_MethodName: Settings
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 300279765}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: UISound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

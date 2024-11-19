@@ -60,7 +60,7 @@ public class DraggableObject : MonoBehaviour
             //ensures audioclip will only play once while dragging (hopefully)
             if (!GameObject.Find("ConveyorSFX"))
             {
-                AudioManager.Instance.PlaySoundFXClip(conveyorSound, transform, 0.6f, 1f, "ConveyorSFX");
+                AudioManager.Instance.PlaySoundFXClip(conveyorSound, transform, 0.3f, 1f, "ConveyorSFX");
             }
             
             //Snap to conveyor height

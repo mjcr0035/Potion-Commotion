@@ -15,6 +15,8 @@ public class AudioManager : MonoBehaviour
     public AudioClip[] menuSounds;
     public AudioClip[] pageSounds;
     public AudioClip[] swapSounds;
+    public AudioClip pauseSound;
+    public AudioClip unpauseSound;
 
     public AudioClip[] musicTrackClips;
 
@@ -107,6 +109,13 @@ public class AudioManager : MonoBehaviour
     {
         PlayRandomSoundFXClip(swapSounds, transform, 0.6f, Random.Range(1f, 1.4f));
     }
-
+    public void PauseSound()
+    {
+        PlaySoundFXClip(pauseSound, transform, 0.6f, 1f, "SFX");
+    }
+    public void UnpauseSound()
+    {
+        PlaySoundFXClip(unpauseSound, transform, 0.6f, 1f, "SFX");
+    }
 }
 

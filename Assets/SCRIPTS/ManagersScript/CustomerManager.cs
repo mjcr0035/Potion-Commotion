@@ -18,6 +18,7 @@ public class CustomerManager : MonoBehaviour
     public GameObject[] customerPrefabs;
     public Animator customerAC;
     public SpriteRenderer customerSprite;
+    public string customerName;
     
     // to ensure customer is a child of register screen
     public GameObject registerParent;
@@ -40,8 +41,15 @@ public class CustomerManager : MonoBehaviour
     public AudioClip solGainedSound;
     public AudioClip orderCorrectSound;
     public AudioClip orderIncorrectSound;
+    public AudioClip wolfHappy;
+    public AudioClip wolfMad;
+    public AudioClip dragonHappy;
+    public AudioClip dragonMad;
+    public AudioClip snakeHappy;
+    public AudioClip snakeMad;
+    public AudioClip pinHappy;
+    public AudioClip pinMad;
 
-    
     //money vars
     [Header("MONEY VARS")]
     public int moneyGained;
@@ -82,7 +90,7 @@ public class CustomerManager : MonoBehaviour
         quotaExceeded = false;
 
         gameManager = FindObjectOfType<GameManager>();
-
+        
         solQuotaText.text = solQuota.ToString() + " SOL";
 
     }
@@ -101,7 +109,7 @@ public class CustomerManager : MonoBehaviour
             readyToCountDown = false;
             SpawnCustomer();
         }
-
+        
     }
 
     public void SpawnCustomer()
@@ -128,7 +136,7 @@ public class CustomerManager : MonoBehaviour
 
             customerSprite = newCustomer.GetComponent<SpriteRenderer>();
             customerAC = newCustomer.GetComponent<Animator>();
-            
+            customerName = newCustomer.name;
            
             happinessUI.SetActive(true);
             feedbackUI.SetActive(true);
@@ -213,9 +221,11 @@ public class CustomerManager : MonoBehaviour
 
         Debug.Log("order correct, customer left this much gold:" + moneyGained + " you had this many seconds left: " + happinessTimer.remainingDuration);
 
-        AudioManager.Instance.PlaySoundFXClip(orderCorrectSound, transform, 0.5f, Random.Range(0.9f, 1.3f), "OrderCorrectSFX");
+        //AudioManager.Instance.PlaySoundFXClip(orderCorrectSound, transform, 0.5f, Random.Range(0.9f, 1.3f), "OrderCorrectSFX");
 
         MoneyUpdate();
+
+        CustomerSFXCorrect();
 
     }
     
@@ -232,21 +242,24 @@ public class CustomerManager : MonoBehaviour
 
         Debug.Log("order incorrect, customer left this much gold:" + moneyGained + " you had this many seconds left: " + happinessTimer.remainingDuration);
 
-        AudioManager.Instance.PlaySoundFXClip(orderIncorrectSound, transform, 0.5f, Random.Range(0.9f, 1.3f), "OrderIncorrectSFX");
+        //AudioManager.Instance.PlaySoundFXClip(orderIncorrectSound, transform, 0.5f, Random.Range(0.9f, 1.3f), "OrderIncorrectSFX");
 
         MoneyUpdate();
+
+        CustomerSFXIncorrect();
 
         if (gameManager.endlessSelected)
         {
             dayCycle.LoseHP();
         }
+
     }
 
     //updates money gained and total, as well as level end UI total, and updates quota performance
     public void MoneyUpdate()
     {
         
-        AudioManager.Instance.PlaySoundFXClip(solGainedSound, transform, 0.7f, Random.Range(0.9f, 1.3f), "SolGainedSFX");
+        AudioManager.Instance.PlaySoundFXClip(solGainedSound, transform, 0.5f, Random.Range(0.9f, 1.3f), "SolGainedSFX");
 
         moneyTotal += moneyGained;
         moneyGainedText.text = "+ " + moneyGained.ToString() + " SOL";
@@ -274,5 +287,49 @@ public class CustomerManager : MonoBehaviour
             quotaMet = false;
             quotaExceeded = true;
         }
+    }
+
+    public void CustomerSFXCorrect()
+    {
+
+        if (customerSprite.name == "Wolf(Clone)")
+        {
+            AudioManager.Instance.PlaySoundFXClip(wolfHappy, transform, 0.7f, Random.Range(0.9f, 1.0f), "CustomerSFX");
+        }
+        else if (customerSprite.name == "Dragon(Clone)")
+        {
+            AudioManager.Instance.PlaySoundFXClip(dragonHappy, transform, 0.7f, Random.Range(0.9f, 1.0f), "CustomerSFX");
+        }
+        else if (customerSprite.name == "Pin(Clone)")
+        {
+            AudioManager.Instance.PlaySoundFXClip(pinHappy, transform, 0.7f, Random.Range(0.9f, 1.0f), "CustomerSFX");
+        }
+        else if (customerSprite.name == "Snake(Clone)")
+        {
+            AudioManager.Instance.PlaySoundFXClip(snakeHappy, transform, 0.7f, Random.Range(0.9f, 1.0f), "CustomerSFX");
+        }
+
+    }
+
+    public void CustomerSFXIncorrect()
+    {
+
+        if (customerSprite.name == "Wolf(Clone)")
+        {
+            AudioManager.Instance.PlaySoundFXClip(wolfMad, transform, 0.7f, Random.Range(0.9f, 1.0f), "CustomerSFX");
+        }
+        else if (customerSprite.name == "Dragon(Clone)")
+        {
+            AudioManager.Instance.PlaySoundFXClip(dragonMad, transform, 0.7f, Random.Range(0.9f, 1.0f), "CustomerSFX");
+        }
+        else if (customerSprite.name == "Pin(Clone)")
+        {
+            AudioManager.Instance.PlaySoundFXClip(pinMad, transform, 0.7f, Random.Range(0.9f, 1.0f), "CustomerSFX");
+        }
+        else if (customerSprite.name == "Snake(Clone)")
+        {
+            AudioManager.Instance.PlaySoundFXClip(snakeMad, transform, 0.7f, Random.Range(0.9f, 1.0f), "CustomerSFX");
+        }
+
     }
 }
