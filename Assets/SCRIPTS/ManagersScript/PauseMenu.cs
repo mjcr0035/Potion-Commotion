@@ -11,6 +11,7 @@ public class PauseMenu : MonoBehaviour
     public GameObject PauseMenuUI;
     public GameObject PauseBtn;
     public GameObject SettingsUI;
+    public GameObject CreditsUI;
     public Slider soundSlider;
 
     private void Start()
@@ -50,7 +51,14 @@ public class PauseMenu : MonoBehaviour
     public void BackToPause()
     {
         SettingsUI.SetActive(false);
+        CreditsUI.SetActive(false);
         PauseMenuUI.SetActive(true);
+    }
+
+    public void Credits()
+    {
+        SettingsUI.SetActive(false);
+        CreditsUI.SetActive(true);
     }
 
     public void VolumeSlider()
