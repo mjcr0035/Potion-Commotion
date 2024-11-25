@@ -189,7 +189,7 @@ public class CustomerManager : MonoBehaviour
             
             customerAC.SetTrigger("Despawn");
 
-            yield return new WaitForSeconds(2);
+            yield return new WaitForSeconds(3);
 
             Destroy(newCustomer);
 
@@ -213,6 +213,8 @@ public class CustomerManager : MonoBehaviour
         FailureUI.SetActive(false);
         SuccessUI.SetActive(true);
         
+        customerAC.SetTrigger("Happy");
+
         moneyGainedText.enabled = true;
 
         potionVal = Random.Range(60, 100);
@@ -233,6 +235,8 @@ public class CustomerManager : MonoBehaviour
     {
         FailureUI.SetActive(true);
         SuccessUI.SetActive(false);
+
+        customerAC.SetTrigger("Angry");
 
         moneyGainedText.enabled = true;
 
